@@ -15,10 +15,12 @@ const navItems = [
 
 export default function Header() {
   const location = useLocation()
-  const { user, authLoading, signInWithEmail, signOut } = useApp()
+  const { user, authLoading, signInWithEmail, verifyOtp, signOut } = useApp()
   const [showLogin, setShowLogin] = useState(false)
   const [email, setEmail] = useState('')
+  const [otp, setOtp] = useState('')
   const [sending, setSending] = useState(false)
+  const [verifying, setVerifying] = useState(false)
   const [sent, setSent] = useState(false)
   const [error, setError] = useState('')
 
@@ -32,13 +34,38 @@ export default function Header() {
       try {
         await signInWithEmail(trimmed)
         setSent(true)
-      } catch {
-        setError('发送失败，请检查邮箱地址')
+      } catch (err) {
+        // 429 = rate limit but email may still have been sent
+        const msg = err instanceof Error ? err.message : String(err)
+        if (msg.includes('429') || msg.includes('rate')) {
+          setSent(true) // show OTP input anyway — email was likely sent
+        } else {
+          setError('发送失败，请检查邮箱地址')
+        }
       } finally {
         setSending(false)
       }
     },
     [email, signInWithEmail],
+  )
+
+  const handleVerify = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault()
+      const trimmed = otp.trim()
+      if (!trimmed || trimmed.length !== 6) return
+      setVerifying(true)
+      setError('')
+      try {
+        await verifyOtp(email, trimmed)
+        // onAuthStateChange will fire and close the modal
+      } catch {
+        setError('验证码错误或已过期，请重新发送')
+      } finally {
+        setVerifying(false)
+      }
+    },
+    [email, otp, verifyOtp],
   )
 
   const handleLogout = useCallback(async () => {
@@ -52,6 +79,7 @@ export default function Header() {
   const closeLogin = useCallback(() => {
     setShowLogin(false)
     setEmail('')
+    setOtp('')
     setSent(false)
     setError('')
   }, [])
@@ -186,15 +214,44 @@ export default function Header() {
               </button>
             </div>
             {sent ? (
-              <div className="text-center py-4">
-                <p className="text-3xl mb-3">📧</p>
-                <p className="text-[var(--color-text)] dark:text-[var(--color-dark-text)] font-medium mb-2">
-                  魔法链接已发送
+              <form onSubmit={handleVerify}>
+                <p className="text-sm text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] mb-4">
+                  验证码已发送到 <strong>{email}</strong>，请输入邮件中的6位数字。
                 </p>
-                <p className="text-sm text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)]">
-                  请查看邮箱 <strong>{email}</strong>，点击链接完成登录。
-                </p>
-              </div>
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  maxLength={6}
+                  required
+                  autoFocus
+                  placeholder="000000"
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))}
+                  className="w-full px-4 py-3 rounded-xl border border-[var(--color-border)] dark:border-[var(--color-dark-border)] bg-[var(--color-bg)] dark:bg-[var(--color-dark-border)]/30 text-[var(--color-text)] dark:text-[var(--color-dark-text)] text-center text-2xl tracking-[0.5em] font-mono outline-none focus:border-[var(--color-primary)] dark:focus:border-[var(--color-dark-primary)] transition-colors"
+                />
+                {error && (
+                  <p className="text-sm text-red-500 mt-2">{error}</p>
+                )}
+                <button
+                  type="submit"
+                  disabled={verifying || otp.length !== 6}
+                  className={cn(
+                    'w-full mt-4 py-3 rounded-xl text-sm font-medium transition-colors cursor-pointer',
+                    'bg-[var(--color-primary)] text-white hover:opacity-90 disabled:opacity-50',
+                    'dark:bg-[var(--color-dark-primary)]'
+                  )}
+                >
+                  {verifying ? '验证中...' : '验证登录'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { setSent(false); setOtp(''); setError('') }}
+                  className="w-full mt-2 py-2 text-sm text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] hover:text-[var(--color-primary)] cursor-pointer transition-colors"
+                >
+                  重新输入邮箱
+                </button>
+              </form>
             ) : (
               <form onSubmit={handleLogin}>
                 <p className="text-sm text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] mb-4">

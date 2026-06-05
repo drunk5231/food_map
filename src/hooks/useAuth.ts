@@ -38,7 +38,20 @@ export function useAuth() {
 
   const signInWithEmail = useCallback(async (email: string) => {
     if (!isSupabaseConfigured || !supabase) return
-    const { error } = await supabase.auth.signInWithOtp({ email })
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: { shouldCreateUser: true },
+    })
+    if (error) throw error
+  }, [])
+
+  const verifyOtp = useCallback(async (email: string, token: string) => {
+    if (!isSupabaseConfigured || !supabase) return
+    const { error } = await supabase.auth.verifyOtp({
+      email,
+      token,
+      type: 'email',
+    })
     if (error) throw error
   }, [])
 
@@ -48,5 +61,5 @@ export function useAuth() {
     if (error) throw error
   }, [])
 
-  return { user, loading, signInWithEmail, signOut }
+  return { user, loading, signInWithEmail, verifyOtp, signOut }
 }

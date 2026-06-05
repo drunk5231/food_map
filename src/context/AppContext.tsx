@@ -25,6 +25,7 @@ interface AppContextType {
   user: AuthUser | null
   authLoading: boolean
   signInWithEmail: (email: string) => Promise<void>
+  verifyOtp: (email: string, token: string) => Promise<void>
   signOut: () => Promise<void>
 }
 
@@ -83,9 +84,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
       user: auth.user,
       authLoading: auth.loading,
       signInWithEmail: auth.signInWithEmail,
+      verifyOtp: auth.verifyOtp,
       signOut: auth.signOut,
     }),
-    [userState.state, userState.toggleFavorite, userState.toggleEaten, userState.toggleWantToEat, userState.setTasteProfile, userState.markProvinceVisited, userState.resetState, unlockAchievement, favoriteSet, eatenSet, wantToEatSet, auth.user, auth.loading, auth.signInWithEmail, auth.signOut],
+    [userState.state, userState.toggleFavorite, userState.toggleEaten, userState.toggleWantToEat, userState.setTasteProfile, userState.markProvinceVisited, userState.resetState, unlockAchievement, favoriteSet, eatenSet, wantToEatSet, auth.user, auth.loading, auth.signInWithEmail, auth.verifyOtp, auth.signOut],
   )
 
   return (
