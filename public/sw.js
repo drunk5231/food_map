@@ -58,7 +58,7 @@ async function enforceCacheLimit(cacheName) {
 async function networkFirst(request) {
   try {
     const response = await fetch(request)
-    // Cache API only supports GET requests
+    // Cache API only supports GET requests; never cache error/rate-limit responses
     if (response && response.status === 200 && request.method === 'GET') {
       const cache = await caches.open(CACHE_NAME)
       await cache.put(request, response.clone())
@@ -155,12 +155,20 @@ self.addEventListener('fetch', event => {
     return
   }
 
-  // Supabase API responses: network-first with cache fallback
+  // Supabase API: bypass cache for non-GET (auth, mutations), cache GET only
   if (url.hostname.includes('supabase')) {
-    event.respondWith(networkFirst(request).catch(() =>
-      new Response(JSON.stringify({ error: 'offline', message: 'Network unavailable' }),
-        { status: 503, headers: { 'Content-Type': 'application/json; charset=utf-8' } })
-    ))
+    if (request.method !== 'GET') {
+      // Non-GET requests (auth, data mutations) go directly to network, never cached
+      event.respondWith(fetch(request).catch(() =>
+        new Response(JSON.stringify({ error: 'offline', message: 'Network unavailable' }),
+          { status: 503, headers: { 'Content-Type': 'application/json; charset=utf-8' } })
+      ))
+    } else {
+      event.respondWith(networkFirst(request).catch(() =>
+        new Response(JSON.stringify({ error: 'offline', message: 'Network unavailable' }),
+          { status: 503, headers: { 'Content-Type': 'application/json; charset=utf-8' } })
+      ))
+    }
     return
   }
 

@@ -43,9 +43,11 @@ export function useAuth() {
       options: { shouldCreateUser: true },
     })
     if (error) {
-      // 429 rate limit or 503 service issue — email was likely still sent
-      const status = (error as unknown as Record<string, unknown>).status
-      if (status === 429 || status === 503) return
+      // Rate limit or service issue — email was likely still sent
+      const err = error as unknown as Record<string, unknown>
+      const status = err.status
+      const code = err.code ?? (err as Record<string, unknown>).error_code
+      if (status === 429 || status === 503 || code === 'over_email_send_rate_limit') return
       throw error
     }
   }, [])
