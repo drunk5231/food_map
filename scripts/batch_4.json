@@ -1,0 +1,2290 @@
+[
+  {
+    "category": "snack",
+    "cooking_methods": [
+      "roast"
+    ],
+    "difficulty": 1,
+    "id": "hongkong_grid_cake",
+    "main_ingredients": [
+      "面粉",
+      "鸡蛋",
+      "白糖",
+      "黄油"
+    ],
+    "name": "格仔饼",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "snack",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 4,
+    "id": "hongkong_ha_gao",
+    "main_ingredients": [
+      "虾仁",
+      "澄面",
+      "猪油",
+      "笋"
+    ],
+    "name": "虾饺",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "street_food",
+    "cooking_methods": [
+      "deep_fry"
+    ],
+    "difficulty": 1,
+    "id": "hongkong_jian_yin_san_bao",
+    "main_ingredients": [
+      "茄子",
+      "青椒",
+      "豆腐",
+      "鱼肉"
+    ],
+    "name": "煎酿三宝",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "cold_dish",
+    "cooking_methods": [
+      "braise"
+    ],
+    "difficulty": 2,
+    "id": "hongkong_lou_mei",
+    "main_ingredients": [
+      "鸡翅",
+      "鸡肾",
+      "豆腐",
+      "萝卜",
+      "卤水"
+    ],
+    "name": "卤味",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "dessert",
+    "cooking_methods": [
+      "stir_fry"
+    ],
+    "difficulty": 2,
+    "id": "hongkong_mango_pancake",
+    "main_ingredients": [
+      "芒果",
+      "奶油",
+      "面粉",
+      "鸡蛋",
+      "糖"
+    ],
+    "name": "芒果班戟",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "drink",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hongkong_milk_tea",
+    "main_ingredients": [
+      "红茶",
+      "淡奶"
+    ],
+    "name": "港式丝袜奶茶",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "snack",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 1,
+    "id": "hongkong_pig_intestine_roll",
+    "main_ingredients": [
+      "米浆",
+      "酱油",
+      "芝麻",
+      "甜酱"
+    ],
+    "name": "猪肠粉",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "snack",
+    "cooking_methods": [
+      "roast"
+    ],
+    "difficulty": 2,
+    "id": "hongkong_pineapple_bun_butter",
+    "main_ingredients": [
+      "面粉",
+      "黄油",
+      "糖",
+      "鸡蛋"
+    ],
+    "name": "菠萝油",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "soup",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hongkong_plain_wonton",
+    "main_ingredients": [
+      "鲜虾",
+      "猪肉",
+      "大地鱼汤"
+    ],
+    "name": "净云吞",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "drink",
+    "cooking_methods": [
+      "cold"
+    ],
+    "difficulty": 1,
+    "id": "hongkong_red_bean_ice",
+    "main_ingredients": [
+      "红豆",
+      "炼乳",
+      "冰块"
+    ],
+    "name": "红豆冰",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "snack",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 2,
+    "id": "hongkong_rice_noodle_roll",
+    "main_ingredients": [
+      "米浆",
+      "虾仁",
+      "叉烧",
+      "酱油"
+    ],
+    "name": "肠粉",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "roast"
+    ],
+    "difficulty": 4,
+    "id": "hongkong_roast_goose",
+    "main_ingredients": [
+      "黑棕鹅",
+      "五香盐",
+      "酸梅酱"
+    ],
+    "name": "烧鹅",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "deep_fry"
+    ],
+    "difficulty": 2,
+    "id": "hongkong_salt_pepper_mantis",
+    "main_ingredients": [
+      "濑尿虾",
+      "椒盐",
+      "蒜",
+      "辣椒"
+    ],
+    "name": "椒盐濑尿虾",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "braise",
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hongkong_satay_beef_noodle",
+    "main_ingredients": [
+      "牛肉",
+      "沙嗲酱",
+      "面条",
+      "洋葱"
+    ],
+    "name": "沙嗲牛肉面",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "snack",
+    "cooking_methods": [
+      "deep_fry"
+    ],
+    "difficulty": 2,
+    "id": "hongkong_shrimp_toast",
+    "main_ingredients": [
+      "虾仁",
+      "吐司",
+      "鸡蛋",
+      "芝麻"
+    ],
+    "name": "虾多士",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "snack",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 3,
+    "id": "hongkong_siu_mai",
+    "main_ingredients": [
+      "猪肉",
+      "虾仁",
+      "香菇",
+      "面粉"
+    ],
+    "name": "烧麦",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "roast"
+    ],
+    "difficulty": 3,
+    "id": "hongkong_siu_yuk",
+    "main_ingredients": [
+      "五花肉",
+      "五香盐",
+      "白醋"
+    ],
+    "name": "烧肉",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "stir_fry"
+    ],
+    "difficulty": 2,
+    "id": "hongkong_soy_sauce_chow_mein",
+    "main_ingredients": [
+      "面条",
+      "酱油",
+      "豆芽",
+      "葱"
+    ],
+    "name": "豉油王炒面",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "street_food",
+    "cooking_methods": [
+      "deep_fry",
+      "stir_fry"
+    ],
+    "difficulty": 2,
+    "id": "hongkong_stuffed_3_treasures",
+    "main_ingredients": [
+      "茄子",
+      "青椒",
+      "豆腐",
+      "鲮鱼肉"
+    ],
+    "name": "煎酿三宝",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "stir_fry"
+    ],
+    "difficulty": 2,
+    "id": "hongkong_tai_pai_dong",
+    "main_ingredients": [
+      "豉椒炒蚬",
+      "椒盐濑尿虾",
+      "避风塘炒蟹"
+    ],
+    "name": "大排档",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "dessert",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 1,
+    "id": "hongkong_tong_sui",
+    "main_ingredients": [
+      "红豆",
+      "绿豆",
+      "番薯",
+      "芋头"
+    ],
+    "name": "糖水",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "stir_fry"
+    ],
+    "difficulty": 3,
+    "id": "hongkong_typhoon_shelter_crab",
+    "main_ingredients": [
+      "花蟹",
+      "蒜蓉",
+      "辣椒",
+      "豆豉",
+      "面包糠"
+    ],
+    "name": "避风塘炒蟹",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "soup",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 1,
+    "id": "hongkong_wan_zi_xi",
+    "main_ingredients": [
+      "粉丝",
+      "鸡蛋",
+      "香菇",
+      "醋",
+      "胡椒"
+    ],
+    "name": "碗仔翅",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "soup",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 1,
+    "id": "hongkong_wanzai_chi",
+    "main_ingredients": [
+      "粉丝",
+      "鸡蛋",
+      "木耳",
+      "鸡丝",
+      "醋"
+    ],
+    "name": "碗仔翅",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hongkong_white_cut_chicken",
+    "main_ingredients": [
+      "三黄鸡",
+      "姜葱",
+      "沙姜",
+      "花生油"
+    ],
+    "name": "白切鸡",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 3,
+    "id": "hongkong_wonton_noodle",
+    "main_ingredients": [
+      "竹升面",
+      "鲜虾云吞",
+      "大地鱼汤底"
+    ],
+    "name": "云吞面",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "dessert",
+    "cooking_methods": [
+      "cold"
+    ],
+    "difficulty": 2,
+    "id": "hongkong_yangzhi_ganlu",
+    "main_ingredients": [
+      "芒果",
+      "西柚",
+      "椰浆",
+      "西米"
+    ],
+    "name": "杨枝甘露",
+    "province_id": "hongkong"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 1,
+    "id": "hubei_enshi_hezha",
+    "main_ingredients": [
+      "黄豆",
+      "青菜",
+      "辣椒"
+    ],
+    "name": "恩施合渣",
+    "province_id": "hubei"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "roast"
+    ],
+    "difficulty": 1,
+    "id": "hubei_enshi_tuojia_fan",
+    "main_ingredients": [
+      "面粉",
+      "豆瓣酱",
+      "葱",
+      "芝麻",
+      "辣椒"
+    ],
+    "name": "恩施土家酱香饼",
+    "province_id": "hubei"
+  },
+  {
+    "category": "cold_dish",
+    "cooking_methods": [
+      "cold",
+      "steam"
+    ],
+    "difficulty": 2,
+    "id": "hubei_ezhou_liangpi",
+    "main_ingredients": [
+      "面粉",
+      "辣椒油",
+      "醋",
+      "蒜",
+      "芝麻酱"
+    ],
+    "name": "鄂州凉皮",
+    "province_id": "hubei"
+  },
+  {
+    "category": "snack",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 3,
+    "id": "hubei_huanggang_shaomei",
+    "main_ingredients": [
+      "面粉",
+      "猪肉",
+      "虾仁",
+      "香菇",
+      "笋丁"
+    ],
+    "name": "黄冈烧梅",
+    "province_id": "hubei"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "steam",
+      "boil"
+    ],
+    "difficulty": 3,
+    "id": "hubei_huangpi_sanxian",
+    "main_ingredients": [
+      "鱼丸",
+      "肉丸",
+      "肉糕",
+      "鸡汤"
+    ],
+    "name": "黄陂三鲜",
+    "province_id": "hubei"
+  },
+  {
+    "category": "dessert",
+    "cooking_methods": [
+      "roast"
+    ],
+    "difficulty": 3,
+    "id": "hubei_huangshi_gangbing",
+    "main_ingredients": [
+      "面粉",
+      "芝麻",
+      "白糖",
+      "冰糖",
+      "桂花"
+    ],
+    "name": "黄石港饼",
+    "province_id": "hubei"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 4,
+    "id": "hubei_jingmen_panlongcai",
+    "main_ingredients": [
+      "猪肉",
+      "鸡蛋",
+      "鱼肉",
+      "淀粉"
+    ],
+    "name": "荆门蟠龙菜",
+    "province_id": "hubei"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 3,
+    "id": "hubei_jingzhou_yumian",
+    "main_ingredients": [
+      "草鱼",
+      "鸡蛋",
+      "淀粉",
+      "葱"
+    ],
+    "name": "荆州鱼糕",
+    "province_id": "hubei"
+  },
+  {
+    "category": "street_food",
+    "cooking_methods": [
+      "deep_fry"
+    ],
+    "difficulty": 1,
+    "id": "hubei_mianwo",
+    "main_ingredients": [
+      "大米",
+      "黄豆",
+      "葱花",
+      "芝麻"
+    ],
+    "name": "面窝",
+    "province_id": "hubei"
+  },
+  {
+    "category": "soup",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hubei_paigu_outang",
+    "main_ingredients": [
+      "排骨",
+      "莲藕",
+      "姜",
+      "料酒"
+    ],
+    "name": "排骨藕汤",
+    "province_id": "hubei"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hubei_qianjiang_caiyumian",
+    "main_ingredients": [
+      "财鱼",
+      "面条",
+      "辣椒",
+      "姜蒜"
+    ],
+    "name": "潜江财鱼面",
+    "province_id": "hubei"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil",
+      "stir_fry"
+    ],
+    "difficulty": 2,
+    "id": "hubei_qianjiang_caoyumian",
+    "main_ingredients": [
+      "财鱼",
+      "面条",
+      "辣椒",
+      "姜",
+      "蒜"
+    ],
+    "name": "潜江财鱼面",
+    "province_id": "hubei"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "braise",
+      "stir_fry"
+    ],
+    "difficulty": 2,
+    "id": "hubei_qianjiang_youmen",
+    "main_ingredients": [
+      "小龙虾",
+      "辣椒",
+      "花椒",
+      "蒜",
+      "啤酒"
+    ],
+    "name": "潜江油焖大虾",
+    "province_id": "hubei"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hubei_reganmian",
+    "main_ingredients": [
+      "碱水面",
+      "芝麻酱",
+      "萝卜丁",
+      "葱花",
+      "辣椒油"
+    ],
+    "name": "热干面",
+    "province_id": "hubei"
+  },
+  {
+    "category": "snack",
+    "cooking_methods": [
+      "roast"
+    ],
+    "difficulty": 3,
+    "id": "hubei_sanxian_doupi",
+    "main_ingredients": [
+      "绿豆粉",
+      "鸡蛋",
+      "糯米",
+      "肉丁",
+      "笋丁",
+      "香菇"
+    ],
+    "name": "三鲜豆皮",
+    "province_id": "hubei"
+  },
+  {
+    "category": "soup",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hubei_shiyan_sanhetang",
+    "main_ingredients": [
+      "牛肉",
+      "红薯粉",
+      "饺子",
+      "辣椒",
+      "花椒"
+    ],
+    "name": "十堰三合汤",
+    "province_id": "hubei"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "boil",
+      "stir_fry"
+    ],
+    "difficulty": 2,
+    "id": "hubei_suizhou_huarou",
+    "main_ingredients": [
+      "猪肉",
+      "淀粉",
+      "辣椒",
+      "蒜"
+    ],
+    "name": "随州广水滑肉",
+    "province_id": "hubei"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "braise"
+    ],
+    "difficulty": 3,
+    "id": "hubei_tianmen_jiangya",
+    "main_ingredients": [
+      "鸭",
+      "酱油",
+      "冰糖",
+      "八角",
+      "桂皮"
+    ],
+    "name": "天门酱鸭",
+    "province_id": "hubei"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 3,
+    "id": "hubei_wuchang_yu",
+    "main_ingredients": [
+      "武昌鱼",
+      "葱",
+      "姜",
+      "料酒"
+    ],
+    "name": "清蒸武昌鱼",
+    "province_id": "hubei"
+  },
+  {
+    "category": "street_food",
+    "cooking_methods": [
+      "roast"
+    ],
+    "difficulty": 3,
+    "id": "hubei_wuhan_doupi",
+    "main_ingredients": [
+      "绿豆",
+      "鸡蛋",
+      "糯米",
+      "猪肉",
+      "香菇",
+      "笋丁"
+    ],
+    "name": "武汉豆皮",
+    "province_id": "hubei"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hubei_wuhan_hutangfen",
+    "main_ingredients": [
+      "鲫鱼",
+      "细粉",
+      "胡椒",
+      "葱花"
+    ],
+    "name": "武汉糊汤粉",
+    "province_id": "hubei"
+  },
+  {
+    "category": "street_food",
+    "cooking_methods": [
+      "braise"
+    ],
+    "difficulty": 2,
+    "id": "hubei_wuhan_yabo",
+    "main_ingredients": [
+      "鸭脖",
+      "辣椒",
+      "花椒",
+      "八角",
+      "桂皮"
+    ],
+    "name": "武汉鸭脖",
+    "province_id": "hubei"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 3,
+    "id": "hubei_wuhan_yuwan",
+    "main_ingredients": [
+      "草鱼",
+      "鸡蛋",
+      "淀粉",
+      "葱姜"
+    ],
+    "name": "武汉鱼丸",
+    "province_id": "hubei"
+  },
+  {
+    "category": "cold_dish",
+    "cooking_methods": [
+      "braise",
+      "pickle"
+    ],
+    "difficulty": 3,
+    "id": "hubei_xiangyang_chanti",
+    "main_ingredients": [
+      "猪蹄",
+      "盐",
+      "香料"
+    ],
+    "name": "襄阳缠蹄",
+    "province_id": "hubei"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hubei_xiangyang_niumian",
+    "main_ingredients": [
+      "碱水面",
+      "牛肉",
+      "辣椒",
+      "花椒",
+      "豆瓣酱"
+    ],
+    "name": "襄阳牛肉面",
+    "province_id": "hubei"
+  },
+  {
+    "category": "soup",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hubei_xianning_heshengjitang",
+    "main_ingredients": [
+      "老母鸡",
+      "枸杞",
+      "红枣",
+      "姜"
+    ],
+    "name": "咸宁贺胜鸡汤",
+    "province_id": "hubei"
+  },
+  {
+    "category": "soup",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hubei_xianning_jitang",
+    "main_ingredients": [
+      "老母鸡",
+      "枸杞",
+      "红枣",
+      "姜"
+    ],
+    "name": "咸宁贺胜鸡汤",
+    "province_id": "hubei"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 3,
+    "id": "hubei_xiantao_mianyang_sanzheng",
+    "main_ingredients": [
+      "猪肉",
+      "鱼",
+      "蔬菜",
+      "米粉"
+    ],
+    "name": "沔阳三蒸",
+    "province_id": "hubei"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 2,
+    "id": "hubei_xiantao_sanzheng",
+    "main_ingredients": [
+      "猪肉",
+      "藕",
+      "萝卜",
+      "米粉"
+    ],
+    "name": "仙桃蒸菜",
+    "province_id": "hubei"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 2,
+    "id": "hubei_xiantao_zhengcai",
+    "main_ingredients": [
+      "猪肉",
+      "藕",
+      "豆角",
+      "南瓜",
+      "米粉"
+    ],
+    "name": "仙桃蒸菜",
+    "province_id": "hubei"
+  },
+  {
+    "category": "drink",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 1,
+    "id": "hubei_xiaogan_mijiou",
+    "main_ingredients": [
+      "糯米",
+      "酒曲",
+      "桂花"
+    ],
+    "name": "孝感米酒",
+    "province_id": "hubei"
+  },
+  {
+    "category": "drink",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 1,
+    "id": "hubei_xiaogan_mijiu",
+    "main_ingredients": [
+      "糯米",
+      "酒曲",
+      "桂花",
+      "枸杞"
+    ],
+    "name": "孝感米酒",
+    "province_id": "hubei"
+  },
+  {
+    "category": "dessert",
+    "cooking_methods": [
+      "boil",
+      "cold"
+    ],
+    "difficulty": 1,
+    "id": "hubei_yichang_ganlan",
+    "main_ingredients": [
+      "大米",
+      "红糖",
+      "冰块"
+    ],
+    "name": "宜昌凉虾",
+    "province_id": "hubei"
+  },
+  {
+    "category": "street_food",
+    "cooking_methods": [
+      "deep_fry"
+    ],
+    "difficulty": 1,
+    "id": "hubei_yichang_luobo_jiaozi",
+    "main_ingredients": [
+      "萝卜丝",
+      "面粉",
+      "辣椒",
+      "花椒"
+    ],
+    "name": "宜昌萝卜饺子",
+    "province_id": "hubei"
+  },
+  {
+    "category": "dessert",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 1,
+    "id": "hubei_yichang_xiadouhua",
+    "main_ingredients": [
+      "黄豆",
+      "石膏",
+      "辣椒",
+      "花椒",
+      "芝麻"
+    ],
+    "name": "宜昌峡口豆花",
+    "province_id": "hubei"
+  },
+  {
+    "category": "cold_dish",
+    "cooking_methods": [
+      "roast",
+      "smoke"
+    ],
+    "difficulty": 3,
+    "id": "hunan_changde_jiangbanya",
+    "main_ingredients": [
+      "鸭",
+      "辣椒",
+      "花椒",
+      "酱油",
+      "香料"
+    ],
+    "name": "常德酱板鸭",
+    "province_id": "hunan"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hunan_changde_mifen",
+    "main_ingredients": [
+      "米粉",
+      "牛肉",
+      "辣椒",
+      "花椒",
+      "葱"
+    ],
+    "name": "常德米粉",
+    "province_id": "hunan"
+  },
+  {
+    "category": "street_food",
+    "cooking_methods": [
+      "braise"
+    ],
+    "difficulty": 2,
+    "id": "hunan_changsha_juewei_yabo",
+    "main_ingredients": [
+      "鸭脖",
+      "辣椒",
+      "花椒",
+      "八角",
+      "桂皮"
+    ],
+    "name": "长沙绝味鸭脖",
+    "province_id": "hunan"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "stir_fry"
+    ],
+    "difficulty": 2,
+    "id": "hunan_changsha_kouweixia",
+    "main_ingredients": [
+      "小龙虾",
+      "辣椒",
+      "花椒",
+      "蒜",
+      "紫苏"
+    ],
+    "name": "长沙口味虾",
+    "province_id": "hunan"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "stir_fry",
+      "braise"
+    ],
+    "difficulty": 2,
+    "id": "hunan_changsha_kouweixie",
+    "main_ingredients": [
+      "螃蟹",
+      "辣椒",
+      "花椒",
+      "蒜",
+      "紫苏"
+    ],
+    "name": "长沙口味蟹",
+    "province_id": "hunan"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 1,
+    "id": "hunan_changsha_mifen",
+    "main_ingredients": [
+      "米粉",
+      "肉丝",
+      "辣椒",
+      "葱花"
+    ],
+    "name": "长沙米粉",
+    "province_id": "hunan"
+  },
+  {
+    "category": "street_food",
+    "cooking_methods": [
+      "deep_fry"
+    ],
+    "difficulty": 1,
+    "id": "hunan_changsha_tangyou_baba",
+    "main_ingredients": [
+      "糯米粉",
+      "红糖",
+      "白糖"
+    ],
+    "name": "长沙糖油粑粑",
+    "province_id": "hunan"
+  },
+  {
+    "category": "dessert",
+    "cooking_methods": [
+      "deep_fry"
+    ],
+    "difficulty": 1,
+    "id": "hunan_changsha_tangyouba",
+    "main_ingredients": [
+      "糯米",
+      "红糖",
+      "白糖"
+    ],
+    "name": "长沙糖油粑粑",
+    "province_id": "hunan"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "stir_fry"
+    ],
+    "difficulty": 1,
+    "id": "hunan_changsha_xiaochaorou",
+    "main_ingredients": [
+      "五花肉",
+      "青辣椒",
+      "蒜",
+      "豆豉"
+    ],
+    "name": "长沙小炒肉",
+    "province_id": "hunan"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hunan_chenzhou_qifengdu_yufen",
+    "main_ingredients": [
+      "鲢鱼",
+      "米粉",
+      "辣椒",
+      "豆膏"
+    ],
+    "name": "郴州栖凤渡鱼粉",
+    "province_id": "hunan"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hunan_chenzhou_yufen",
+    "main_ingredients": [
+      "鲢鱼",
+      "米粉",
+      "辣椒",
+      "豆膏"
+    ],
+    "name": "郴州栖凤渡鱼粉",
+    "province_id": "hunan"
+  },
+  {
+    "category": "street_food",
+    "cooking_methods": [
+      "deep_fry"
+    ],
+    "difficulty": 2,
+    "id": "hunan_chou_doufu",
+    "main_ingredients": [
+      "豆腐",
+      "辣椒",
+      "蒜",
+      "香菜"
+    ],
+    "name": "长沙臭豆腐",
+    "province_id": "hunan"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 2,
+    "id": "hunan_dujiao_yutou",
+    "main_ingredients": [
+      "鲢鱼头",
+      "剁椒",
+      "豆豉",
+      "蒜末"
+    ],
+    "name": "剁椒鱼头",
+    "province_id": "hunan"
+  },
+  {
+    "category": "cold_dish",
+    "cooking_methods": [
+      "roast",
+      "smoke"
+    ],
+    "difficulty": 3,
+    "id": "hunan_hengyang_jiangbanyu",
+    "main_ingredients": [
+      "草鱼",
+      "辣椒",
+      "花椒",
+      "酱油"
+    ],
+    "name": "衡阳酱板鱼",
+    "province_id": "hunan"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hunan_hengyang_yufen",
+    "main_ingredients": [
+      "鲜鱼",
+      "米粉",
+      "辣椒",
+      "姜",
+      "蒜"
+    ],
+    "name": "衡阳鱼粉",
+    "province_id": "hunan"
+  },
+  {
+    "category": "cold_dish",
+    "cooking_methods": [
+      "pickle"
+    ],
+    "difficulty": 4,
+    "id": "hunan_huaihua_tanzuyu",
+    "main_ingredients": [
+      "稻花鱼",
+      "糯米",
+      "辣椒",
+      "盐"
+    ],
+    "name": "怀化侗族腌鱼",
+    "province_id": "hunan"
+  },
+  {
+    "category": "cold_dish",
+    "cooking_methods": [
+      "pickle"
+    ],
+    "difficulty": 3,
+    "id": "hunan_huaihua_yanyu",
+    "main_ingredients": [
+      "稻花鱼",
+      "糯米",
+      "辣椒",
+      "盐"
+    ],
+    "name": "怀化侗族腌鱼",
+    "province_id": "hunan"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "braise",
+      "stir_fry"
+    ],
+    "difficulty": 3,
+    "id": "hunan_huaihua_zhijiangya",
+    "main_ingredients": [
+      "鸭肉",
+      "辣椒",
+      "姜蒜",
+      "酱油"
+    ],
+    "name": "怀化芷江鸭",
+    "province_id": "hunan"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "stir_fry",
+      "braise"
+    ],
+    "difficulty": 2,
+    "id": "hunan_kouwei_xia",
+    "main_ingredients": [
+      "小龙虾",
+      "辣椒",
+      "花椒",
+      "蒜",
+      "紫苏"
+    ],
+    "name": "口味虾",
+    "province_id": "hunan"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "stir_fry"
+    ],
+    "difficulty": 1,
+    "id": "hunan_lajiao_chaorou",
+    "main_ingredients": [
+      "五花肉",
+      "青辣椒",
+      "蒜",
+      "豆豉"
+    ],
+    "name": "辣椒炒肉",
+    "province_id": "hunan"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 2,
+    "id": "hunan_liuyang_zhengcai",
+    "main_ingredients": [
+      "腊肉",
+      "干鱼",
+      "豆腐",
+      "辣椒",
+      "米粉"
+    ],
+    "name": "浏阳蒸菜",
+    "province_id": "hunan"
+  },
+  {
+    "category": "soup",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hunan_loudi_sanhetang",
+    "main_ingredients": [
+      "牛血",
+      "牛肉",
+      "牛肚",
+      "辣椒",
+      "姜"
+    ],
+    "name": "娄底新化三合汤",
+    "province_id": "hunan"
+  },
+  {
+    "category": "soup",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hunan_loudi_xinhua_sanhetang",
+    "main_ingredients": [
+      "牛血",
+      "牛肉",
+      "红薯粉",
+      "辣椒",
+      "山胡椒"
+    ],
+    "name": "娄底新化三合汤",
+    "province_id": "hunan"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "braise"
+    ],
+    "difficulty": 3,
+    "id": "hunan_maoshi_hongshaorou",
+    "main_ingredients": [
+      "五花肉",
+      "冰糖",
+      "酱油",
+      "干辣椒",
+      "八角"
+    ],
+    "name": "毛氏红烧肉",
+    "province_id": "hunan"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hunan_shaoyang_mifen",
+    "main_ingredients": [
+      "米粉",
+      "牛肉",
+      "辣椒",
+      "酸豆角"
+    ],
+    "name": "邵阳米粉",
+    "province_id": "hunan"
+  },
+  {
+    "category": "cold_dish",
+    "cooking_methods": [
+      "roast",
+      "smoke"
+    ],
+    "difficulty": 3,
+    "id": "hunan_shaoyang_zhuxue_wanzi",
+    "main_ingredients": [
+      "猪血",
+      "豆腐",
+      "辣椒",
+      "猪肉"
+    ],
+    "name": "邵阳猪血丸子",
+    "province_id": "hunan"
+  },
+  {
+    "category": "cold_dish",
+    "cooking_methods": [
+      "smoke",
+      "steam"
+    ],
+    "difficulty": 3,
+    "id": "hunan_shaoyang_zhuxuewanzi",
+    "main_ingredients": [
+      "猪血",
+      "豆腐",
+      "辣椒",
+      "五花肉"
+    ],
+    "name": "邵阳猪血丸子",
+    "province_id": "hunan"
+  },
+  {
+    "category": "dessert",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 3,
+    "id": "hunan_xiangtan_dengxingao",
+    "main_ingredients": [
+      "糯米",
+      "白糖",
+      "桂花",
+      "薄荷"
+    ],
+    "name": "湘潭灯芯糕",
+    "province_id": "hunan"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "steam",
+      "braise"
+    ],
+    "difficulty": 3,
+    "id": "hunan_xiangtan_kourou",
+    "main_ingredients": [
+      "五花肉",
+      "梅干菜",
+      "酱油",
+      "冰糖"
+    ],
+    "name": "湘潭毛氏扣肉",
+    "province_id": "hunan"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "smoke",
+      "steam"
+    ],
+    "difficulty": 3,
+    "id": "hunan_xiangxi_larou",
+    "main_ingredients": [
+      "五花肉",
+      "盐",
+      "花椒",
+      "柏树枝"
+    ],
+    "name": "湘西腊肉",
+    "province_id": "hunan"
+  },
+  {
+    "category": "cold_dish",
+    "cooking_methods": [
+      "pickle"
+    ],
+    "difficulty": 2,
+    "id": "hunan_xiangxi_paogu",
+    "main_ingredients": [
+      "鸡爪",
+      "泡椒",
+      "醋",
+      "蒜"
+    ],
+    "name": "湘西泡椒凤爪",
+    "province_id": "hunan"
+  },
+  {
+    "category": "cold_dish",
+    "cooking_methods": [
+      "pickle"
+    ],
+    "difficulty": 2,
+    "id": "hunan_xiangxi_paojiao_fengzhua",
+    "main_ingredients": [
+      "鸡爪",
+      "泡椒",
+      "醋",
+      "蒜"
+    ],
+    "name": "湘西泡椒凤爪",
+    "province_id": "hunan"
+  },
+  {
+    "category": "drink",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "hunan_yiyang_leicha",
+    "main_ingredients": [
+      "茶叶",
+      "花生",
+      "芝麻",
+      "绿豆",
+      "大米"
+    ],
+    "name": "益阳擂茶",
+    "province_id": "hunan"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "stir_fry"
+    ],
+    "difficulty": 3,
+    "id": "hunan_yongzhou_xueya",
+    "main_ingredients": [
+      "鸭",
+      "鸭血",
+      "辣椒",
+      "姜",
+      "蒜",
+      "米酒"
+    ],
+    "name": "永州血鸭",
+    "province_id": "hunan"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "deep_fry"
+    ],
+    "difficulty": 2,
+    "id": "hunan_yueyang_dongting_heduojia",
+    "main_ingredients": [
+      "莲藕",
+      "猪肉",
+      "面粉",
+      "鸡蛋"
+    ],
+    "name": "岳阳洞庭湖藕夹",
+    "province_id": "hunan"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "stir_fry",
+      "steam"
+    ],
+    "difficulty": 2,
+    "id": "hunan_yueyang_dongting_yinyu",
+    "main_ingredients": [
+      "银鱼",
+      "鸡蛋",
+      "葱",
+      "姜"
+    ],
+    "name": "岳阳洞庭银鱼",
+    "province_id": "hunan"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 2,
+    "id": "hunan_yueyang_tonggu_yu",
+    "main_ingredients": [
+      "鲢鱼头",
+      "酱椒",
+      "豆豉",
+      "蒜"
+    ],
+    "name": "岳阳酱椒蒸鱼头",
+    "province_id": "hunan"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "braise"
+    ],
+    "difficulty": 2,
+    "id": "hunan_zhangjiajie_sanxiaguo",
+    "main_ingredients": [
+      "腊肉",
+      "豆腐",
+      "萝卜",
+      "辣椒",
+      "花椒"
+    ],
+    "name": "张家界三下锅",
+    "province_id": "hunan"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "stir_fry"
+    ],
+    "difficulty": 1,
+    "id": "hunan_zhuzhou_chaofen",
+    "main_ingredients": [
+      "米粉",
+      "鸡蛋",
+      "豆芽",
+      "辣椒"
+    ],
+    "name": "株洲炒粉",
+    "province_id": "hunan"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "steam",
+      "braise"
+    ],
+    "difficulty": 2,
+    "id": "hunan_zhuzhou_yanling_zhaobian",
+    "main_ingredients": [
+      "豆腐",
+      "猪肉",
+      "香菇",
+      "葱"
+    ],
+    "name": "株洲炎陵酿豆腐",
+    "province_id": "hunan"
+  },
+  {
+    "category": "snack",
+    "cooking_methods": [
+      "roast"
+    ],
+    "difficulty": 3,
+    "id": "jiangsu_changzhou_tianmian",
+    "main_ingredients": [
+      "面粉",
+      "猪油",
+      "白糖",
+      "芝麻"
+    ],
+    "name": "常州大麻糕",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "soup",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 3,
+    "id": "jiangsu_changzhou_yuantou",
+    "main_ingredients": [
+      "鲢鱼头",
+      "豆腐",
+      "枸杞",
+      "姜"
+    ],
+    "name": "天目湖鱼头",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 1,
+    "id": "jiangsu_dazhaxie",
+    "main_ingredients": [
+      "大闸蟹",
+      "姜醋汁"
+    ],
+    "name": "阳澄湖大闸蟹",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 5,
+    "id": "jiangsu_dazhu_gansi",
+    "main_ingredients": [
+      "豆腐干",
+      "鸡汤",
+      "虾仁",
+      "笋片"
+    ],
+    "name": "大煮干丝",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "snack",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 3,
+    "id": "jiangsu_huaiyang_shaomai",
+    "main_ingredients": [
+      "猪肉",
+      "猪皮冻",
+      "面粉"
+    ],
+    "name": "淮安汤包",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "stir_fry"
+    ],
+    "difficulty": 4,
+    "id": "jiangsu_huaiyang_shizitou",
+    "main_ingredients": [
+      "鳝鱼",
+      "蒜",
+      "酱油",
+      "黄酒"
+    ],
+    "name": "淮安软兜长鱼",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "cold_dish",
+    "cooking_methods": [
+      "pickle",
+      "smoke"
+    ],
+    "difficulty": 4,
+    "id": "jiangsu_nanjing_dingling",
+    "main_ingredients": [
+      "鸭子",
+      "盐",
+      "花椒"
+    ],
+    "name": "南京板鸭",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 1,
+    "id": "jiangsu_nanjing_doufu_nao",
+    "main_ingredients": [
+      "豆腐",
+      "虾米",
+      "榨菜",
+      "辣椒油",
+      "香菜"
+    ],
+    "name": "南京豆腐涝",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "snack",
+    "cooking_methods": [
+      "roast"
+    ],
+    "difficulty": 2,
+    "id": "jiangsu_nanjing_guotie",
+    "main_ingredients": [
+      "猪肉",
+      "面粉",
+      "葱花"
+    ],
+    "name": "南京锅贴",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "dessert",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "jiangsu_nanjing_mafu_tang",
+    "main_ingredients": [
+      "莲藕",
+      "糯米",
+      "蜂蜜",
+      "桂花"
+    ],
+    "name": "南京蜜汁藕",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "jiangsu_nanjing_mian",
+    "main_ingredients": [
+      "面条",
+      "皮肚",
+      "猪肝",
+      "青菜",
+      "辣椒"
+    ],
+    "name": "南京小煮面",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "cold_dish",
+    "cooking_methods": [
+      "boil",
+      "cold"
+    ],
+    "difficulty": 3,
+    "id": "jiangsu_nanjing_yanshui_ya",
+    "main_ingredients": [
+      "鸭子",
+      "盐",
+      "花椒",
+      "八角"
+    ],
+    "name": "南京盐水鸭",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "jiangsu_nanjing_yanshuiya",
+    "main_ingredients": [
+      "鸭",
+      "盐",
+      "花椒",
+      "八角"
+    ],
+    "name": "南京盐水鸭",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "soup",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "jiangsu_nanjing_yaxue_fentang",
+    "main_ingredients": [
+      "鸭血",
+      "粉丝",
+      "鸭肝",
+      "鸭肠",
+      "豆腐果"
+    ],
+    "name": "鸭血粉丝汤",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "steam",
+      "boil"
+    ],
+    "difficulty": 4,
+    "id": "jiangsu_shizi_tou",
+    "main_ingredients": [
+      "五花肉",
+      "蟹粉",
+      "荸荠",
+      "鸡汤"
+    ],
+    "name": "清炖蟹粉狮子头",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "deep_fry"
+    ],
+    "difficulty": 4,
+    "id": "jiangsu_shongshu_guiyu",
+    "main_ingredients": [
+      "鳜鱼",
+      "松子",
+      "糖",
+      "醋",
+      "番茄酱"
+    ],
+    "name": "松鼠鳜鱼",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 3,
+    "id": "jiangsu_suzhou_fengzhen_mian",
+    "main_ingredients": [
+      "面条",
+      "白汤",
+      "焖肉",
+      "酒酿"
+    ],
+    "name": "苏州枫镇大面",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 3,
+    "id": "jiangsu_suzhou_fengzheng_mian",
+    "main_ingredients": [
+      "面条",
+      "猪骨汤",
+      "焖肉",
+      "葱"
+    ],
+    "name": "苏州枫镇大面",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "jiangsu_suzhou_shuangma",
+    "main_ingredients": [
+      "藏书羊",
+      "盐",
+      "姜"
+    ],
+    "name": "苏州藏书羊肉",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "dessert",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 2,
+    "id": "jiangsu_suzhou_shuangpi_shaomai",
+    "main_ingredients": [
+      "牛奶",
+      "蛋清",
+      "白糖"
+    ],
+    "name": "苏州双皮奶",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "snack",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 4,
+    "id": "jiangsu_suzhou_xiefen_tangbao",
+    "main_ingredients": [
+      "蟹粉",
+      "猪肉",
+      "猪皮冻",
+      "面粉"
+    ],
+    "name": "苏州蟹粉汤包",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "soup",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 5,
+    "id": "jiangsu_wensi_doufu",
+    "main_ingredients": [
+      "嫩豆腐",
+      "香菇",
+      "笋",
+      "火腿"
+    ],
+    "name": "文思豆腐",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "braise"
+    ],
+    "difficulty": 3,
+    "id": "jiangsu_wuxi_paigu",
+    "main_ingredients": [
+      "猪排骨",
+      "酱油",
+      "冰糖",
+      "黄酒"
+    ],
+    "name": "无锡酱排骨",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "braise"
+    ],
+    "difficulty": 3,
+    "id": "jiangsu_wuxi_tangpai",
+    "main_ingredients": [
+      "猪排骨",
+      "冰糖",
+      "酱油",
+      "黄酒"
+    ],
+    "name": "无锡糖排",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "snack",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 3,
+    "id": "jiangsu_wuxi_xiaolongbao",
+    "main_ingredients": [
+      "猪肉",
+      "猪皮冻",
+      "面粉",
+      "白糖"
+    ],
+    "name": "无锡小笼包",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "braise"
+    ],
+    "difficulty": 2,
+    "id": "jiangsu_xuzhou_diguoji",
+    "main_ingredients": [
+      "土鸡",
+      "面粉",
+      "辣椒",
+      "酱油"
+    ],
+    "name": "徐州地锅鸡",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "stir_fry"
+    ],
+    "difficulty": 2,
+    "id": "jiangsu_yangzhou_chaofan",
+    "main_ingredients": [
+      "米饭",
+      "鸡蛋",
+      "虾仁",
+      "火腿",
+      "青豆"
+    ],
+    "name": "扬州炒饭",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 5,
+    "id": "jiangsu_yangzhou_gansi_tang",
+    "main_ingredients": [
+      "豆腐干",
+      "鸡汤",
+      "虾仁",
+      "笋片"
+    ],
+    "name": "扬州大煮干丝",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "soup",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 5,
+    "id": "jiangsu_yangzhou_wensi_doufu",
+    "main_ingredients": [
+      "嫩豆腐",
+      "香菇",
+      "笋",
+      "火腿"
+    ],
+    "name": "扬州文思豆腐",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "jiangsu_zhenjiang_guogai_mian",
+    "main_ingredients": [
+      "面条",
+      "酱油",
+      "猪油",
+      "青菜"
+    ],
+    "name": "镇江锅盖面",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "cold_dish",
+    "cooking_methods": [
+      "boil",
+      "cold"
+    ],
+    "difficulty": 3,
+    "id": "jiangsu_zhenjiang_yaorou",
+    "main_ingredients": [
+      "猪蹄",
+      "盐",
+      "硝",
+      "姜",
+      "醋"
+    ],
+    "name": "镇江肴肉",
+    "province_id": "jiangsu"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "boil",
+      "steam"
+    ],
+    "difficulty": 2,
+    "id": "jiangxi_chongren_maji",
+    "main_ingredients": [
+      "麻鸡",
+      "姜",
+      "葱",
+      "酱油"
+    ],
+    "name": "崇仁麻鸡",
+    "province_id": "jiangxi"
+  },
+  {
+    "category": "snack",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "jiangxi_fengcheng_dongmi_tang",
+    "main_ingredients": [
+      "糯米",
+      "白糖",
+      "芝麻",
+      "花生"
+    ],
+    "name": "丰城冻米糖",
+    "province_id": "jiangxi"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "steam"
+    ],
+    "difficulty": 2,
+    "id": "jiangxi_fenzhengrou",
+    "main_ingredients": [
+      "五花肉",
+      "米粉",
+      "红薯",
+      "辣椒粉"
+    ],
+    "name": "粉蒸肉",
+    "province_id": "jiangxi"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 1,
+    "id": "jiangxi_fuzhou_paofen",
+    "main_ingredients": [
+      "米粉",
+      "辣椒酱",
+      "猪骨汤",
+      "葱花"
+    ],
+    "name": "抚州泡粉",
+    "province_id": "jiangxi"
+  },
+  {
+    "category": "main",
+    "cooking_methods": [
+      "stir_fry"
+    ],
+    "difficulty": 3,
+    "id": "jiangxi_gannan_xiaochaoyu",
+    "main_ingredients": [
+      "草鱼",
+      "辣椒",
+      "醋",
+      "蒜"
+    ],
+    "name": "赣南小炒鱼",
+    "province_id": "jiangxi"
+  },
+  {
+    "category": "staple",
+    "cooking_methods": [
+      "steam",
+      "stir_fry"
+    ],
+    "difficulty": 2,
+    "id": "jiangxi_ganzhou_huangyuan_miguo",
+    "main_ingredients": [
+      "粳米",
+      "碱水",
+      "黄栀子"
+    ],
+    "name": "赣州黄元米果",
+    "province_id": "jiangxi"
+  },
+  {
+    "category": "drink",
+    "cooking_methods": [
+      "boil"
+    ],
+    "difficulty": 2,
+    "id": "jiangxi_ganzhou_kejia_leicha",
+    "main_ingredients": [
+      "茶叶",
+      "芝麻",
+      "花生",
+      "薄荷",
+      "盐"
+    ],
+    "name": "赣州客家擂茶",
+    "province_id": "jiangxi"
+  }
+]

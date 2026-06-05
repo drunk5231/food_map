@@ -1,0 +1,354 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* ─── Light mode ─── */
+  --color-primary: #B8300A;
+  --color-primary-hover: #B82D0A;
+  --color-bg: #FFF7E6;
+  --color-surface: #FFFDF5;
+  --color-text: #2B1B12;
+  --color-text-secondary: #5C432E;
+  --color-border: #E8D5B7;
+  --color-accent: #C06800;
+  --color-divider: #D4B896;
+  --color-map-bg: #F5EFE0;
+
+  /* ─── Dark mode ─── */
+  --color-dark-bg: #1a1210;
+  --color-dark-surface: #2a2018;
+  --color-dark-primary: #FF6B35;
+  --color-dark-primary-hover: #e65a20;
+  --color-dark-text: #f5ebe0;
+  --color-dark-text-secondary: #d4c4b0;
+  --color-dark-border: #3a2e22;
+  --color-dark-divider: #5a4e42;
+  --color-dark-accent: #FF9C3F;
+
+  /* ─── 通用 ─── */
+  --color-title-blue: #1677FF;
+}
+
+/* Dark mode body overrides */
+.dark body {
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text);
+  --svg-bg: var(--color-dark-surface);
+  --svg-border: var(--color-dark-border);
+  --svg-text: var(--color-dark-text);
+  --svg-text-secondary: var(--color-dark-text-secondary);
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-dark-border);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dark-divider);
+}
+
+/* 基础样式 */
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  /* Safe area for standalone PWA / iOS Safari notch */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  --svg-bg: var(--color-surface);
+  --svg-border: var(--color-border);
+  --svg-text: var(--color-text);
+  --svg-text-secondary: var(--color-text-secondary);
+}
+
+/* 地图省份路径 */
+.province-path {
+  stroke: rgba(255, 255, 255, 0.8);
+  stroke-width: 1.5;
+  cursor: pointer;
+  transition: opacity 0.15s, stroke-width 0.15s, filter 0.15s;
+}
+
+.dark .province-path {
+  stroke: rgba(58, 46, 34, 0.9);
+}
+
+.province-path:hover {
+  opacity: 1;
+  stroke-width: 2.5;
+  stroke: var(--color-text);
+  filter: brightness(1.1) drop-shadow(0 0 4px rgba(0, 0, 0, 0.15));
+}
+
+.dark .province-path:hover {
+  stroke: var(--color-dark-text);
+  filter: brightness(1.15) drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
+}
+
+.province-path.active {
+  stroke: var(--color-primary);
+  stroke-width: 3;
+  filter: brightness(1.15);
+}
+
+/* 省份标注 */
+.province-label {
+  font-size: 10px;
+  font-weight: 600;
+  fill: rgba(0, 0, 0, 0.65);
+  pointer-events: none;
+  user-select: none;
+  text-anchor: middle;
+  paint-order: stroke fill;
+  stroke: rgba(255, 255, 255, 0.85);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+.dark .province-label {
+  fill: rgba(245, 235, 224, 0.75);
+  stroke: rgba(42, 32, 24, 0.85);
+}
+
+/* 口味雷达图 */
+.radar-grid {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: 0.5;
+}
+
+.dark .radar-grid {
+  stroke: var(--color-dark-border);
+}
+
+.radar-area {
+  fill: rgba(212, 56, 13, 0.2);
+  stroke: var(--color-primary);
+  stroke-width: 2;
+}
+
+.radar-dot {
+  fill: var(--color-primary);
+  stroke: #fff;
+  stroke-width: 1;
+}
+
+.dark .radar-dot {
+  stroke: var(--color-dark-surface);
+}
+
+/* 卡片悬浮效果 */
+.card-hover {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(43, 27, 18, 0.12);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* 面板滑入动画 */
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInToast {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.3s ease-out;
+}
+
+/* 题目切换滑入动画 */
+@keyframes slideIn {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.35s ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.25s ease-out;
+}
+
+.animate-slide-in-toast {
+  animation: slideInToast 0.3s ease-out;
+}
+
+/* 时钟动画 */
+@keyframes clockPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.clock-pulse {
+  animation: clockPulse 2s ease-in-out infinite;
+}
+
+/* 时钟指针平滑过渡 */
+.clock-hand {
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 时段色块渐变动画 */
+.segment-transition {
+  transition: fill 0.6s ease-in-out, opacity 0.6s ease-in-out;
+}
+
+/* 时段切换颜色渐变 */
+@keyframes slotColorFade {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.slot-color-transition {
+  animation: slotColorFade 0.5s ease-out;
+}
+
+/* 推荐菜品淡入动画 */
+@keyframes dishFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.dish-fade-in {
+  animation: dishFadeIn 0.4s ease-out both;
+}
+
+/* 节气卡片悬停效果 */
+.solar-term-card {
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+
+.solar-term-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(43, 27, 18, 0.1);
+}
+
+.dark .solar-term-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* 时段选择器按钮 */
+.time-slot-btn {
+  transition: all 0.25s ease;
+}
+
+.time-slot-btn:hover {
+  transform: translateY(-1px);
+}
+
+.time-slot-btn.active {
+  box-shadow: 0 2px 12px rgba(212, 56, 13, 0.25);
+}
+
+.dark .time-slot-btn.active {
+  box-shadow: 0 2px 12px rgba(255, 107, 53, 0.25);
+}
+
+/* 做法区块 */
+.recipe-block {
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+/* 功能入口渐变动画 */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.feature-card-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+  animation-play-state: running;
+}
+
+.feature-card-gradient.paused {
+  animation-play-state: paused;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-divider);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-card-gradient {
+    animation-play-state: paused;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

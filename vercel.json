@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://mhknirrwyuzdoinojsuj.supabase.co https://geo.datav.aliyun.com; img-src 'self' data:; font-src 'self'"
+        }
+      ]
+    }
+  ]
+}

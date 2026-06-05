@@ -1,0 +1,395 @@
+import json
+import io
+import sys
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
+def escape_sql(s):
+    return s.replace("'", "''")
+
+def get_ingredients_str(ingredients, n=3):
+    return '、'.join(ingredients[:n])
+
+def get_cook_method(methods):
+    method_map = {
+        'boil': '煮',
+        'steam': '蒸',
+        'stir_fry': '炒',
+        'deep_fry': '炸',
+        'roast': '烤',
+        'braise': '焖',
+        'cold': '凉拌',
+        'smoke': '烟熏',
+        'pickle': '腌制',
+    }
+    result = []
+    for m in methods:
+        if m in method_map:
+            result.append(method_map[m])
+    return result
+
+def generate_recipe(dish):
+    name = dish['name']
+    cat = dish['category']
+    ingredients = dish['main_ingredients']
+    methods = get_cook_method(dish['cooking_methods'])
+    difficulty = dish['difficulty']
+    dish_id = dish['id']
+    recipe = generate_recipe_by_dish(dish_id, name, cat, ingredients, methods, difficulty)
+    return recipe
+
+def generate_recipe_by_dish(dish_id, name, cat, ingredients, methods, difficulty):
+    """Generate recipe for specific dishes based on their ID and properties."""
+
+    # ===== GANSU =====
+    if dish_id == 'gansu_niangpi':
+        return '1.面粉加水和成光滑面团，醒面半小时后反复揉搓洗出面筋，面浆静置沉淀数小时。2.将沉淀好的面浆舀入平盘中蒸制成薄皮，晾凉后切成长条。3.酿皮子装碗，加入芝麻酱、蒜泥、辣椒油和醋充分拌匀即可食用。'
+    elif dish_id == 'gansu_pingliang_hele_mian':
+        return '1.饸饹面用饸饹床将面团压入滚沸的锅中，煮至面条浮起熟透后捞出沥水。2.碗中放入辣椒油、醋、蒜泥和香菜碎，浇入滚烫的骨头汤。3.将煮好的饸饹面放入汤碗中，拌匀调味即可食用。'
+    elif dish_id == 'gansu_qingyang_shuipen':
+        return '1.羊肉切大块冷水下锅焯去血沫，重新加清水放入花椒粒，大火烧开后转小火慢炖两小时至酥烂。2.白萝卜切厚片放入羊肉汤中煮至透明软烂，加盐调味。3.出锅盛碗撒上香菜末，配上辣椒油碟蘸食。'
+    elif dish_id == 'gansu_shouzhua_yangrou':
+        return '1.羊排或羊腿肉整块冷水下锅，加入适量盐和花椒粒，大火烧开撇去浮沫。2.转小火慢煮约一个半小时，用筷子能轻松扎透即熟，捞出晾至微温。3.用手顺着肉纹撕成小块，蘸椒盐或蒜醋汁食用。'
+    elif dish_id == 'gansu_tianpei':
+        return '1.青稞洗净后浸泡数小时，上笼蒸熟后摊开晾凉至不烫手的温度。2.均匀拌入碾碎的酒曲，装入干净的坛子或容器中压实密封。3.发酵两三天待青稞散发出清甜酒香即成甜醅子，可冷食或加白糖温食。'
+    elif dish_id == 'gansu_tianshui_guagua':
+        return '1.荞麦淀粉加清水搅拌成均匀的糊状，倒入平盘中上笼大火蒸二十分钟至凝固。2.取出晾凉后脱模，用手掰成或切成小块装入碗中。3.调入芝麻酱、蒜泥、辣椒油和醋，充分拌匀即可食用。'
+    elif dish_id == 'gansu_tianshui_jiangshui_mian':
+        return '1.面条放入沸水中煮至熟透但仍有嚼劲，捞出过凉水沥干盛入碗中。2.浆水倒入锅中烧开，加少许盐调味，放入切碎的辣椒和韭菜段。3.将滚烫的浆水浇在面条上，拌匀即可食用，酸香清爽。'
+    elif dish_id == 'gansu_wuwei_mianpi':
+        return '1.面粉加清水搅拌成稀稠适中的面糊，舀入平盘中上笼大火蒸成薄皮，取出晾凉切成长条。2.碗中调入芝麻酱、蒜泥、辣椒油、醋和芥末搅匀成调味汁。3.将面皮条装碗浇上调味汁，充分拌匀即可食用。'
+    elif dish_id == 'gansu_wuwei_samianpi':
+        return '1.面条煮熟捞入碗中备用，卤肉提前卤好切薄片。2.茯茶用沸水冲泡出浓茶汤，凉菜洗净切好调味。3.面条、卤肉片、茯茶和凉菜四样一同上桌，面条配卤肉吃，茯茶解腻为武威传统搭配。'
+    elif dish_id == 'gansu_zhangye_cuoyu_mian':
+        return '1.面粉加水和成稍硬的面团醒面二十分钟，取小剂子在掌心搓成两头尖中间粗的鱼形面条。2.将搓好的鱼面下入沸水中煮至浮起熟透捞出。3.配以西红柿炒制的臊子浇头，加辣椒油、醋和蒜泥拌食。'
+    elif dish_id == 'gansu_zhangye_niurou_xiaofan':
+        return '1.面粉加水和成面团后搓成黄豆大小的面丁，牛肉切成小方块焯水后炖煮至八成熟。2.土豆切小丁与面丁一同放入牛肉汤中煮至面丁浮起软糯。3.加盐和少许辣椒调味，出锅撒上香菜碎即食。'
+    elif dish_id == 'gansu_zhangye_xiaofan':
+        return '1.面粉搓成黄豆大小的面丁备用，羊肉切小丁，土豆切丁，西红柿切块。2.锅中油热下羊肉丁煸炒变色，放入土豆丁和西红柿翻炒加水煮开。3.下入面丁煮至浮起熟透，加盐调味出锅撒香菜即食。'
+
+    # ===== GUANGDONG =====
+    elif dish_id == 'guangdong_baozai_fan':
+        return '1.大米洗净放入砂锅加适量水，大火煮开后转小火煮至水分快干。2.将腊味切片、排骨腌好、滑鸡切块，分别均匀铺在米饭表面。3.盖紧锅盖小火焖十五分钟至饭熟锅巴香脆，淋上酱油拌匀食用。'
+    elif dish_id == 'guangdong_cantonese_roast_goose':
+        return '1.黑棕鹅洗净沥干，腹腔内均匀涂抹五香盐，鹅皮表面刷上麦芽糖水风干四小时。2.挂入炭火烤炉中以中火慢烤，每隔十分钟翻转一次使皮色均匀金红。3.烤约五十分钟至皮脆肉熟取出，稍晾后斩件装盘配酸梅酱蘸食。'
+    elif dish_id == 'guangdong_changfen':
+        return '1.米浆调稀倒在湿布上摊成薄层，均匀撒上虾仁碎、猪肉末和鸡蛋液。2.将布拉放入蒸笼大火蒸三分钟至粉皮透明起泡即熟。3.用刮刀将肠粉从布拉上刮下卷成条状，切段装盘淋上酱油即可食用。'
+    elif dish_id == 'guangdong_chaoshan_lue':
+        return '1.狮头鹅处理干净沥干水分，用酱油、冰糖、八角、桂皮和南姜调制卤水烧开。2.整只鹅放入卤水中，小火慢卤约两小时，期间反复将鹅提起浸入使上色均匀。3.卤至鹅肉酥烂入味上色均匀，捞出稍晾后斩件装盘即可。'
+    elif dish_id == 'guangdong_chaoshan_niurouwan':
+        return '1.新鲜牛肉去净筋膜，用两根铁棒交替捶打成细腻的肉泥，加入鱼露和少许盐调味。2.用手抓起肉泥从虎口处挤出圆球状，用勺子刮入温水锅中定型。3.大火煮至牛肉丸全部浮起即熟，捞出配清汤食用，弹牙爽口。'
+    elif dish_id == 'guangdong_chaoshan_shaguo_zhou' or dish_id == 'guangdong_chaoshan_shuoguozhou':
+        return '1.大米洗净放入砂锅加足量清水，大火煮沸后转小火慢慢熬煮四十分钟至米粒开花。2.鲜虾去壳去虾线，蟹斩件洗净，鱿鱼切花刀，姜切细丝备用。3.粥底浓稠时放入所有海鲜和姜丝，大火煮五分钟加盐调味即成。'
+    elif dish_id == 'guangdong_char_siu':
+        return '1.猪梅花肉切成粗长条，用叉烧酱、蜂蜜、五香粉和少许酱油拌匀腌制四小时以上。2.腌好的肉条摆在烤架上，入预热好的烤箱中层两百度烤制。3.每隔十分钟取出翻面并刷一层蜂蜜水，烤约三十分钟至表面焦香微焦即成。'
+    elif dish_id == 'guangdong_congee':
+        return '1.大米洗净加足量清水大火煮沸，转小火慢熬四十分钟至米粒完全开花粥底浓稠。2.猪肝和瘦肉切成薄片，鲜鱼片切好用少许盐和油拌匀备用。3.粥底重新滚沸时放入猪肝瘦肉和鱼片烫至刚熟，加盐和姜丝调味即成。'
+    elif dish_id == 'guangdong_dim_sum':
+        return '1.虾饺用澄面皮包裹整只鲜虾仁蒸制，烧麦以薄面皮包入调味糯米和肉馅蒸熟。2.肠粉将米浆蒸成薄皮卷入虾仁猪肉馅料，叉烧包发面裹入蜜汁叉烧馅蒸至松软。3.凤爪先炸后蒸至软烂脱骨入味，各式点心配一壶好茶慢慢享用。'
+    elif dish_id == 'guangdong_dongguan_shaogu_lai_fen' or dish_id == 'guangdong_dongguan_shaorang_laifen':
+        return '1.烧鹅提前烤好斩成块状备用，濑粉用清水泡软沥干。2.鹅骨汤大火烧至滚烫，将濑粉放入汤中烫至软熟捞入碗中。3.在濑粉上铺满烧鹅块，淋上酱油和鹅骨汤，撒上葱花即可食用。'
+    elif dish_id == 'guangdong_foshan_hefen':
+        return '1.米浆蒸成薄的河粉皮切成宽条备用，猪肉切丝用酱油和淀粉稍腌。2.大火烧热铁锅，下猪肉丝快速滑炒至变色，放入洗净的豆芽翻炒。3.倒入河粉大火快炒，加酱油调味翻炒均匀，撒上葱花出锅装盘。'
+    elif dish_id == 'guangdong_foshan_jidizhou':
+        return '1.大米加清水大火煮沸后转小火熬煮四十分钟至粥底绵软浓稠。2.猪肝切薄片、猪肠煮熟切段、猪肉丸备好，分别处理干净。3.粥底滚沸时依次放入猪肝片、猪肠段和猪肉丸煮至熟透，加盐撒葱花调味。'
+    elif dish_id == 'guangdong_foshan_manggongbing' or dish_id == 'guangdong_foshan_minggong_bing':
+        return '1.糯米粉加入白糖和猪油揉成柔软的面团，花生炒香去皮碾碎与芝麻白糖拌成馅料。2.取适量面团压扁包入花生芝麻馅，收口后压成圆饼状。3.整齐摆入烤盘送入烤箱，一百八十度烤二十分钟至两面金黄酥脆即成。'
+    elif dish_id == 'guangdong_ganchao_niuhe':
+        return '1.牛肉逆纹切薄片用酱油、淀粉和油腌制十五分钟，河粉用手撕散沥干水分。2.大火烧热铁锅至冒烟，下牛肉片快速滑炒至变色立即盛出。3.锅中下豆芽和河粉大火翻炒，放回牛肉片加酱油炒匀撒葱花出锅。'
+    elif dish_id == 'guangdong_guangzhou_baiqieji' or dish_id == 'guangdong_white_cut_chicken' or dish_id == 'guangdong_zhanjiang_baiqieji':
+        return '1.清远鸡或三黄鸡处理干净，锅中水烧开后放入整鸡，提浸三次使鸡腔内外受热均匀。2.转最小火浸煮二十五分钟，用筷子插入鸡腿无血水即熟，捞出立即浸入冰水中。3.浸泡十分钟使鸡皮爽滑紧致，捞出斩件装盘配姜葱油蘸食。'
+    elif dish_id == 'guangdong_guangzhou_baizhuo_xia':
+        return '1.鲜活基围虾剪去虾须和虾枪洗净沥干，锅中清水大火烧至翻滚沸腾。2.放入虾大火煮约两分钟至虾身弯曲变红，迅速捞出沥水摆入盘中。3.姜切细丝、葱切细丝铺在虾上，烧热花生油淋上，配酱油蘸食。'
+    elif dish_id == 'guangdong_guangzhou_bingtang_xueli':
+        return '1.雪梨洗净从顶部切开，挖去梨核和部分梨肉形成梨盅。2.在梨盅内放入冰糖碎和川贝粉，加少许清水，将梨盖合上用牙签固定。3.放入炖盅隔水炖煮一小时至梨肉软烂透明，取出稍凉后连汤食用。'
+    elif dish_id == 'guangdong_guangzhou_changfen':
+        return '1.米浆调成适当稀稠度，舀入刷了油的蒸盘中摊薄，加入鸡蛋液、虾仁和猪肉末。2.大火蒸三分钟至粉皮表面起泡鼓起即熟，用刮板从一端卷起。3.肠粉卷切段装盘，铺上洗净的生菜叶，淋上鲜味酱油即可食用。'
+    elif dish_id == 'guangdong_guangzhou_laohuoliangtang' or dish_id == 'guangdong_laohuotang':
+        return '1.猪骨和鸡分别焯水去除血沫杂质，捞出冲洗干净放入大汤锅中。2.加入干贝、枸杞和配好的药材包，一次性加足清水大火煮沸。3.转最小火慢煲三至四小时，撇去表面浮油，加盐调味即可饮用。'
+    elif dish_id == 'guangdong_huizhou_dongpo_mei':
+        return '1.新鲜梅菜洗净晾干表面水分，切成碎段后撒盐反复揉搓至出水变软。2.加入切碎的辣椒拌匀，用力压实装入干净的腌菜坛子中密封。3.放置阴凉处腌制半个月以上，梅菜变黄出酸香味即可取出做菜或蒸肉配料。'
+    elif dish_id == 'guangdong_huizhou_meicai_kourou':
+        return '1.五花肉整块煮至七成熟捞出，在肉皮上均匀涂抹酱油上色，入热油锅炸至皮面起泡金黄。2.梅菜泡洗干净切碎铺在碗底，炸好的五花肉切厚片皮朝下码在梅菜上。3.加入酱油和冰糖碎，上笼大火蒸两小时至肉烂入味，取出扣盘即成。'
+    elif dish_id == 'guangdong_jiangmen_enping_shaobing':
+        return '1.面粉加清水和成柔软的面团醒面半小时，花生炒香去皮碾碎与白糖、芝麻拌成甜馅。2.将面团分成小剂子擀成圆片，包入花生芝麻馅收口压成饼状。3.摆入烤盘送入烤炉，中火烤至两面金黄外酥内软即可出炉食用。'
+    elif dish_id == 'guangdong_jiangmen_laifen':
+        return '1.猪大骨加清水大火煮沸后转小火熬煮两小时成浓白骨汤备用。2.濑粉放入沸水锅中煮至软熟透明，捞出沥干水分盛入碗中。3.舀入滚烫的猪骨汤没过濑粉，撒上葱花和炒香的花生碎即可食用。'
+    elif dish_id == 'guangdong_jieyang_pingpangguo':
+        return '1.糯米粉加温水揉成柔软的面团，绿豆加糖炒成绿豆沙搓成小球做馅料。2.取一小块面团压扁包入绿豆沙馅，收口搓圆后放入木质模具压成型。3.脱模后摆入蒸笼大火蒸十五分钟至粿皮晶莹透亮即成。'
+    elif dish_id == 'guangdong_maoming_baqiegou':
+        return '1.狗肉处理干净切成大块，冷水下锅焯去血沫捞出冲洗干净。2.锅中加油烧热放入姜片蒜粒爆香，倒入狗肉块大火翻炒至表面微焦。3.加入足量清水大火煮沸后转小火煮至狗肉熟透，捞出晾凉斩件蘸姜蒜酱油食用。'
+    elif dish_id == 'guangdong_meizhou_yanjuji':
+        return '1.三黄鸡洗净沥干水分，用粗盐和沙姜粉里外均匀涂抹腌制半小时入味。2.用荷叶将整只鸡包裹严实，外面再裹一层砂纸扎紧封口。3.粗盐炒至滚烫放入砂锅，将鸡埋入热盐中小火焗四十分钟至鸡肉熟透即成。'
+    elif dish_id == 'guangdong_qingyuan_zoudiji':
+        return '1.走地鸡处理干净沥干，锅中加足量清水放入姜片和葱结大火烧开。2.放入整鸡浸煮，每隔五分钟提出倒掉鸡腔内的水再放入使受热均匀。3.浸煮约三十分钟至鸡肉刚熟骨边微带血丝，捞出斩件可蒸热蘸姜蓉食用。'
+    elif dish_id == 'guangdong_shantou_haoluo':
+        return '1.新鲜牡蛎洗净沥干水分，与番薯粉、打散的鸡蛋液和葱花混合搅成稠糊。2.平底锅倒入较多的油烧至七成热，倒入蚝烙糊用铲子摊平成圆饼状。3.中小火煎至底面金黄翻面再煎，至两面酥脆盛出配鱼露蘸食。'
+    elif dish_id == 'guangdong_shaoguan_lengshui_zhudu':
+        return '1.猪肚用盐和面粉反复搓洗去除黏液和异味，加胡椒粒和姜片冷水下锅。2.大火煮开后转中火煮约一小时至猪肚筷子能穿透，捞出立即放入冰开水中浸泡。3.浸泡至猪肚完全冷却后捞出切成条状，装盘配姜葱酱油蘸食。'
+    elif dish_id == 'guangdong_shenzhen_yaoji':
+        return '1.走地鸡洗净沥干，内外均匀涂抹食盐和五香粉腌制半小时。2.用新鲜荷叶将整只鸡包裹严实，外面再包一层锡纸扎紧封口。3.土窑烧至通红后将鸡放入，用炭火埋住焗烤约一小时至鸡肉酥烂即成。'
+    elif dish_id == 'guangdong_shunde_shuangpi_nai':
+        return '1.全脂牛奶倒入锅中小火加热至边缘冒泡，倒入碗中静置放凉让表面凝结一层奶皮。2.用筷子轻轻挑起奶皮将下面的牛奶倒出，与蛋清和白糖充分搅匀过滤。3.将混合液沿碗边倒回让奶皮浮起，上笼中小火蒸十五分钟至凝固即成。'
+    elif dish_id == 'guangdong_shunde_yu':
+        return '1.选用新鲜草鱼放血去鳞去骨，鱼肉用精湛刀工切成薄如蝉翼的片。2.鱼片整齐铺在冰镇的盘子上，周围摆上姜丝、葱丝、炸花生碎和白芝麻。3.淋上用酱油和油调成的酱汁，拌匀后生食，讲究食材新鲜和刀工。'
+    elif dish_id == 'guangdong_wonton_noodle':
+        return '1.鲜虾去壳与猪肉一起剁碎调味包成云吞，大地鱼干熬制浓郁汤底备用。2.竹升面放入沸水中煮约一分钟至刚熟有弹性，迅速捞出沥水盛入碗中。3.另起锅将云吞煮熟捞入面碗，舀入滚烫的大地鱼汤底即成。'
+    elif dish_id == 'guangdong_yangjiang_zhuchanglu':
+        return '1.河粉摊平成薄片，放入洗净的豆芽作为馅料，卷成粗条状似猪肠。2.平底锅刷薄油小火加热，放入河粉卷煎至表面微黄散发香气。3.出锅后撒上炒香的芝麻和蒜蓉碎，淋上酱油即可食用。'
+    elif dish_id == 'guangdong_yunfu_douchi_ji':
+        return '1.鸡肉洗净斩成小块，豆豉剁碎，辣椒切圈，蒜切末备用。2.锅中加油烧热，先爆香豆豉、辣椒和蒜末，倒入鸡块大火翻炒至变色。3.加入少许清水盖盖焖煮十分钟至鸡肉入味熟透，大火收汁装盘即成。'
+    elif dish_id == 'guangdong_zhanjiang_haixian_zhou':
+        return '1.大米洗净放入砂锅加足量清水大火煮沸，转小火慢熬四十分钟至粥底浓稠。2.鲜虾去壳去虾线，花蟹斩件刷洗干净，沙虫剖开洗净泥沙，姜切细丝。3.粥底浓稠后放入所有海鲜和姜丝大火煮五分钟，加盐调味即成鲜美海鲜粥。'
+    elif dish_id == 'guangdong_zhaoqing_guozheng_zong':
+        return '1.糯米提前浸泡四小时沥干，五花肉切大块用五香粉和酱油腌制，绿豆去壳蒸熟。2.冬叶两张叠放，依次铺上绿豆、糯米和五花肉，包成枕头形扎紧。3.放入大锅加水没过粽子大火煮四小时，中途加水保持水位至糯米软糯即成。'
+    elif dish_id == 'guangdong_zhaoqing_wenqingli':
+        return '1.肇庆文庆鲤从鱼塘捞起后在清水中饿养两天去泥腥味，处理干净鱼身划花刀。2.鱼放入蒸盘铺上姜丝和葱段，淋少许酱油和料酒去腥。3.大火蒸十分钟至鱼肉刚熟鲜嫩，淋上滚热的花生油激出香味即成。'
+    elif dish_id == 'guangdong_zhongshan_shiqi_ruan':
+        return '1.乳鸽洗净沥干水分，内外均匀涂抹五香盐腌制半小时入味，外皮刷上蜂蜜水风干。2.先入七成热油锅中炸至表皮金黄收紧，捞出沥油。3.再入烤箱中火烤十五分钟至皮脆肉嫩汁多，取出斩件装盘即成。'
+    elif dish_id == 'guangdong_zhuhai_hengqin_hao':
+        return '1.新鲜生蚝撬开壳取肉洗净，保留一面深壳做容器，粉丝温水泡软。2.蒜剁成细蓉用油小火炒至金黄出香，粉丝剪短铺在生蚝壳上放上蚝肉。3.浇上蒜蓉和少许辣椒碎，入蒸笼大火蒸五分钟或入烤箱烤至蒜蓉金黄即成。'
+    elif dish_id == 'guangdong_zhuhai_hengqin_mifen':
+        return '1.猪大骨加清水大火煮沸转小火熬煮两小时成浓白汤底，海鲜处理干净备用。2.米粉放入沸水中烫煮两分钟至软熟透明，捞出沥干水分盛入碗中。3.舀入滚烫的猪骨汤，摆上虾蟹等海鲜配料撒上葱花即可食用。'
+
+    # ===== GUANGXI =====
+    elif dish_id == 'guangxi_baise_kaozhu':
+        return '1.乳猪处理干净去内脏，内外均匀涂抹五香粉和食盐腌制两小时，外皮刷蜂蜜水风干。2.挂入炭火烤炉中以中小火慢烤，每隔十分钟翻转使皮色均匀一致。3.烤约一小时至皮色金红酥脆、肉质鲜嫩多汁，取出斩件装盘食用。'
+    elif dish_id == 'guangxi_baise_wuse_nuomi' or dish_id == 'guangxi_baise_wuse_nuomi_fan':
+        return '1.糯米分成五份，分别用红蓝草汁、枫叶汁、黄栀子汁、紫蕃藤汁浸泡染色数小时。2.五种颜色的糯米沥干后分别上笼大火蒸四十分钟至熟透软糯。3.取出后摆成花朵或图案拼盘，色彩鲜艳，为壮族传统节庆美食。'
+    elif dish_id == 'guangxi_baise_zhutong_fan':
+        return '1.糯米提前浸泡四小时沥干水分，腊肉切成小丁，花生炒香备用。2.将糯米、腊肉丁和花生混合装入新鲜竹筒中至七分满，加少许清水。3.竹筒口用粽叶封好，放入蒸锅大火蒸一小时至米饭熟透竹香四溢即成。'
+    elif dish_id == 'guangxi_beihai_haixian' or dish_id == 'guangxi_beihai_haixian_paidang':
+        return '1.生蚝、鲜虾、花蟹和鱿鱼分别处理清洗干净，蒜剁成蓉备用。2.根据食客喜好选择烹饪方式：蒜蓉粉丝蒸生蚝、椒盐虾、姜葱炒蟹或铁板鱿鱼。3.各式海鲜分别烹制装盘上桌，搭配啤酒享用，鲜美可口。'
+    elif dish_id == 'guangxi_chongzuo_suanzhou':
+        return '1.大米淘洗干净放入锅中加足量清水，大火煮沸后转小火慢慢熬煮成粥。2.酸笋切成碎末放入粥中同煮，小火继续熬煮二十分钟至粥浓稠酸香。3.加入切碎的辣椒调味搅匀，酸辣开胃，配腐乳或小菜同食更佳。'
+    elif dish_id == 'guangxi_chongzuo_zuojiang_yusheng':
+        return '1.新鲜草鱼放血去鳞去皮去骨，鱼肉用精湛刀工切成极薄的片铺在冰盘上。2.准备新鲜酸柠檬挤汁、紫苏叶切丝、辣椒切丝、花生炒香碾碎做配料。3.鱼片夹起蘸酸柠檬汁后配紫苏和花生碎生食，酸辣鲜美口感独特。'
+    elif dish_id == 'guangxi_fangchenggang_haixianfen':
+        return '1.鲜虾去壳去虾线，花蟹斩件刷净，鱿鱼切花刀，姜切细丝备用。2.米粉放入沸水锅中烫煮至软熟透明，捞出沥干盛入大碗中。3.海鲜放入滚汤中煮至刚熟连汤浇在米粉上，撒姜丝和葱花即成。'
+    elif dish_id == 'guangxi_guilin_lipu_kourou' or dish_id == 'guangxi_guilin_lipu_yu_kourou':
+        return '1.五花肉整块煮至七成熟捞出擦干，肉皮涂酱油入热油锅炸至皮面起泡金黄。2.荔浦芋头去皮切成与肉同厚的大片，也入油锅炸至表面金黄定型。3.肉片与芋片交替码入大碗中，加酱油和冰糖上笼大火蒸两小时扣盘即成。'
+    elif dish_id == 'guangxi_guilin_matigao':
+        return '1.马蹄粉加入适量清水搅拌成无颗粒的粉浆，白糖加水煮沸成糖水备用。2.将滚烫的糖水冲入马蹄粉浆中快速搅匀，加入切碎的马蹄粒拌匀。3.倒入刷了油的模具中上笼大火蒸二十分钟至凝固透明，晾凉脱模切块即成。'
+    elif dish_id == 'guangxi_guilin_mifen':
+        return '1.米粉放入沸水锅中烫煮两分钟至软熟有弹性，捞出沥干水分盛入碗中。2.浇上用猪骨和香料熬制的卤水，铺上酥脆的锅烧肉片和酸豆角。3.根据个人口味加入辣椒酱或酸笋，充分拌匀即可食用，鲜香酸辣。'
+    elif dish_id == 'guangxi_guilin_mifen2':
+        return '1.米粉烫熟捞出充分沥干水分放入大碗中，不要带汤。2.淋入浓香的卤水和少许酱油拌匀使米粉入味，铺上切好的锅烧肉和酸豆角。3.加入辣椒油和酸笋等配料，充分拌匀即食，干捞做法风味更加浓郁。'
+    elif dish_id == 'guangxi_guilin_pijiu_yu' or dish_id == 'guangxi_guilin_pijiuyu':
+        return '1.漓江鲤鱼处理干净切成大块，番茄切块，青红辣椒切段，蒜切片备用。2.锅中多放油烧热，放入鱼块煎至两面微黄定型，加入番茄辣椒蒜翻炒。3.倒入一整瓶啤酒没过鱼块大火煮开，转小火焖煮十五分钟至入味收汁即成。'
+    elif dish_id == 'guangxi_guilin_youcha':
+        return '1.本地茶叶放入铁锅中小火干炒至出香，用木锤反复捶打使茶叶出汁。2.加入适量清水大火煮沸，放入炒花生、米花、葱花和姜末。3.煮五分钟左右至茶汤浓郁香气四溢，用滤网滤出茶汤即可趁热饮用。'
+    elif dish_id == 'guangxi_hechi_bama_xiangzhu' or dish_id == 'guangxi_hechi_xiangzhu':
+        return '1.巴马香猪处理干净对半劈开，里外均匀涂抹食盐和五香粉腌制三小时入味。2.将腌好的香猪挂入炭火烤炉中以中火慢烤，不断翻转使受热均匀。3.烤约一个半小时至表皮金红酥脆肉质鲜嫩，取出斩件装盘即可食用。'
+    elif dish_id == 'guangxi_hechi_doufu_yuan' or dish_id == 'guangxi_hechi_doufuyuan':
+        return '1.老豆腐用手捏碎挤去多余水分，与猪肉末、葱花和香菇末混合加盐调味。2.取适量馅料在手中团成乒乓球大小的圆球，表面均匀裹上一层薄淀粉。3.入六成热油锅中火炸至外表金黄酥脆内部熟透，捞出控油装盘即食。'
+    elif dish_id == 'guangxi_hechi_huanjiang_douhua':
+        return '1.黄豆提前浸泡六小时以上，用石磨磨成细腻的豆浆，纱布过滤去豆渣。2.过滤后的豆浆大火煮沸后关火稍凉两分钟，缓缓加入化开的石膏水轻轻搅匀。3.盖盖静置十五分钟凝固成嫩滑的豆腐花，盛入碗中配辣椒和酱油蘸食。'
+    elif dish_id == 'guangxi_hechi_yizhou_liangfen':
+        return '1.凉粉草洗净放入锅中加清水大火煮沸，转小火熬煮一小时至出胶质变浓稠。2.过滤去渣留汁，加入红糖和少许白醋搅匀调味，倒入容器中自然放凉。3.凝固后放入冰箱冷藏，食用时取出切块，清凉爽滑消暑解渴。'
+    elif dish_id == 'guangxi_hezhou_huangtian_kourou':
+        return '1.五花肉整块煮至七成熟捞出擦干，肉皮涂酱油入热油锅炸至起泡金黄。2.芋头去皮切成与肉同厚的大片，入油锅炸至表面金黄定型备用。3.肉片与芋片交替码入碗中，加酱油和冰糖碎上笼蒸两小时至酥烂扣盘即成。'
+    elif dish_id == 'guangxi_hezhou_sanhuangji':
+        return '1.三黄鸡处理干净沥干水分，锅中加足量清水放入姜片和葱结大火烧开。2.放入整鸡浸煮，提浸三次后转最小火浸煮二十分钟至刚熟。3.捞出立即浸入冰水中冷却十分钟，斩件装盘淋香油配姜葱蘸食。'
+    elif dish_id == 'guangxi_laibin_zhutongji':
+        return '1.土鸡处理干净斩成块状，加入姜片和香料拌匀腌制半小时入味。2.将腌好的鸡块塞入新鲜竹筒中至八分满，加少许清水用粽叶封口。3.放入蒸笼大火蒸一小时左右，竹香渗入鸡肉开筒即食原汁原味。'
+    elif dish_id == 'guangxi_laoyou_fen':
+        return '1.锅中加油烧热，下切碎的酸笋、豆豉、辣椒和蒜末大火炒出浓郁香味。2.加入足量清水大火煮沸，放入米粉煮至软熟入味约三分钟。3.加盐调味搅匀，连汤带粉盛入大碗中即可食用，酸辣鲜香开胃。'
+    elif dish_id == 'guangxi_liuzhou_luosi_yajiao':
+        return '1.田螺提前养两天吐净泥沙洗净，鸭脚焯水去腥备用。2.锅中爆香酸笋、辣椒和紫苏叶，放入田螺和鸭脚大火翻炒。3.加入足量清水大火煮开转小火焖煮四十分钟至入味，盛入砂锅煲中热食。'
+    elif dish_id == 'guangxi_liuzhou_lushui_tangyuan':
+        return '1.糯米粉加温水揉成光滑面团，芝麻和花生分别炒香碾碎与白糖拌成甜馅。2.取一小块面团压扁包入馅料收口搓成圆球状汤圆。3.沸水下入汤圆煮至全部浮起再煮两分钟至皮软馅熟，连汤盛碗食用。'
+    elif dish_id == 'guangxi_luosi_fen':
+        return '1.螺蛳与猪骨加酸笋熬煮两小时成浓汤，酸笋的酸味充分融入汤中。2.米粉放入沸水锅中烫煮至软熟有弹性，捞出沥干盛入碗中。3.浇上滚烫的螺蛳汤，放入炸腐竹、花生米和木耳丝等配料即成。'
+    elif dish_id == 'guangxi_luzhai_fenzhengrou':
+        return '1.五花肉切成厚片用酱油和辣椒碎拌匀腌制半小时入味。2.腌好的肉片均匀裹上一层米粉，使每片肉都沾满粉料。3.码入碗中上笼大火蒸一个半小时至肉烂米粉软糯入味，扣盘即成。'
+    elif dish_id == 'guangxi_nanning_fenchong':
+        return '1.大米磨成细腻的米浆，用手搓成两头尖中间粗的虫状粉条即粉虫。2.将粉虫放入沸水锅中煮至浮起即熟，捞出沥干水分。3.锅中加油烧热放入酱油、辣椒和葱花炒香，倒入粉虫翻炒均匀即成。'
+    elif dish_id == 'guangxi_nanning_laoyou_fen' or dish_id == 'guangxi_nanning_laoyou_mian':
+        return '1.锅中加油烧热，放入切碎的酸笋、豆豉、辣椒和蒜末大火炒出浓香。2.加入足量清水大火煮沸，放入米粉或面条煮至软熟入味。3.加盐调味搅匀，连汤盛入碗中，酸辣鲜香是南宁人最爱的味道。'
+    elif dish_id == 'guangxi_nanning_ningmeng_ya' or dish_id == 'guangxi_ningmeng_ya':
+        return '1.鸭肉斩成块状焯水去除血沫和腥味，捞出沥干备用。2.锅中爆香酸柠檬、酸荞头、酸辣椒和姜片，倒入鸭块大火翻炒上色。3.加入适量清水大火煮开转小火焖煮四十分钟至鸭肉酥烂入味收汁即成。'
+    elif dish_id == 'guangxi_nanning_suanye':
+        return '1.青芒果、白萝卜和青木瓜分别洗净切成条状或薄片备用。2.用食盐、辣椒碎、白糖和白醋按比例调成酸甜可口的腌汁。3.将切好的果蔬放入腌汁中充分拌匀，腌制三小时以上即可食用。'
+    elif dish_id == 'guangxi_qinzhou_zhujiaofen':
+        return '1.猪脚焯水去血沫后放入锅中加水炖煮两小时至软烂脱骨，加入酸笋和辣椒调味。2.米粉放入沸水锅中烫煮至软熟透明，捞出沥干水分盛入碗中。3.舀入滚烫的猪脚浓汤，放上炖好的猪脚块撒上葱花即成。'
+    elif dish_id == 'guangxi_wuzhou_bingquan_doujiang' or dish_id == 'guangxi_wuzhou_bingquandoujiang':
+        return '1.优质黄豆提前浸泡八小时至完全泡发，用梧州冰泉水磨成细腻的生豆浆。2.用纱布反复过滤去豆渣，将过滤后的豆浆倒入锅中大火煮沸。3.转小火再煮十分钟防止假沸，豆浆香浓滑嫩可加白糖调味饮用。'
+    elif dish_id == 'guangxi_wuzhou_guilinggao':
+        return '1.龟板、土茯苓、金银花和菊花加清水大火煮沸转小火熬煮四小时出药汁。2.过滤药渣后加入少许米浆搅匀，继续小火熬煮至浓稠。3.倒入容器中自然放凉凝固成膏状，切块食用可淋蜂蜜或炼乳调味。'
+    elif dish_id == 'guangxi_wuzhou_zhibaoji':
+        return '1.三黄鸡洗净沥干用酱油和五香粉里外涂抹腌制两小时充分入味。2.用特制的玉扣纸将整只鸡包裹严实扎紧封口不漏气。3.入低温油锅中浸炸约二十分钟至纸包鼓起鸡肉熟透，拆纸斩件食用。'
+    elif dish_id == 'guangxi_yulin_gou' or dish_id == 'guangxi_yulin_niuba':
+        return '1.牛肉顺着纹路切成大薄片，用酱油、白糖和五香粉充分拌匀腌制四小时入味。2.将腌好的牛肉片平铺在烤架上，入烤箱低温慢烤或用甘蔗渣烟熏。3.烤至牛肉干香收缩色泽深红，取出晾凉切片食用，口感韧香回味悠长。'
+    elif dish_id == 'guangxi_yulin_niunanfen':
+        return '1.牛腩切大块焯水去血沫，放入锅中加八角、桂皮和清水炖煮两小时至软烂。2.米粉放入沸水锅中烫煮至软熟透明，捞出沥干水分盛入碗中。3.舀入滚烫的牛腩浓汤，放上炖好的牛腩块加辣椒和香菜即成。'
+
+    # ===== GUIZHOU =====
+    elif dish_id == 'guizhou_anshun_juanfen':
+        return '1.米皮蒸熟后摊平晾凉备用，海带丝焯水沥干，折耳根洗净切段。2.取一张米皮摊在掌心，放上海带丝、折耳根和花生碎做馅料。3.将米皮卷成筒状包裹住馅料，淋上红亮的辣椒油即可食用。'
+    elif dish_id == 'guizhou_bijie_tangyuan':
+        return '1.糯米粉加温水揉成光滑面团，芝麻和花生炒香碾碎与白糖、猪油拌成馅料。2.取一小块面团压扁包入馅料收口搓圆成汤圆。3.沸水下入汤圆煮至全部浮起皮馅熟透，连汤盛碗食用甜糯可口。'
+    elif dish_id == 'guizhou_changwang_mian':
+        return '1.猪大肠和猪血旺分别清洗干净，放入加了姜葱的水中煮熟捞出切好备用。2.面条放入沸水中煮至熟透有弹性，捞出沥干盛入碗中。3.在面上铺好大肠片、血旺和脆哨，浇上红油辣椒高汤拌匀即食。'
+    elif dish_id == 'guizhou_doufu_yuanzi':
+        return '1.老豆腐用手捏碎挤去多余水分，加入辣椒面、花椒面和葱花充分拌匀调味。2.取适量豆腐泥在手中团成核桃大小的圆球状，稍微压实定型。3.入六成热油锅中火炸至外皮金黄酥脆内部熟透，捞出蘸辣椒面食用。'
+    elif dish_id == 'guizhou_dushan_yansuan':
+        return '1.青菜洗净晾干表面水分，撒上食盐反复揉搓至出水变软。2.加入切碎的辣椒、蒜末和甜酒拌匀使味道充分融合。3.装入干净的坛子中用力压实密封，腌制半个月以上酸香可口即成。'
+    elif dish_id == 'guizhou_guizhou_laguo':
+        return '1.臭豆腐切成厚片，土豆去皮切片，五花肉切薄片分别备好。2.铁锅或砂锅烧热不放油，将各种食材分批放在锅上慢慢烙制。3.烙至两面焦黄散发香气，蘸上辣椒面和折耳根调成的蘸水食用。'
+    elif dish_id == 'guizhou_guizhou_lajiji':
+        return '1.鸡洗净斩成小块用酱油和料酒腌制二十分钟，入六成热油锅炸至金黄捞出。2.锅中留底油烧热，放入大量干辣椒段、花椒粒和姜蒜末爆香出味。3.倒入炸好的鸡块大火快速翻炒至辣椒香气渗入鸡肉，出锅装盘即成。'
+    elif dish_id == 'guizhou_huajiang_goun':
+        return '1.狗肉处理干净切成大块焯水去血沫，捞出冲洗干净备用。2.锅中加油烧热放入花椒、砂仁、生姜片和干辣椒爆香，倒入狗肉块翻炒。3.加入足量清水大火煮开转小火焖煮两小时至肉烂，配蘸水食用。'
+    elif dish_id == 'guizhou_huaxi_niurou_fen':
+        return '1.新鲜牛肉切薄片焯水去血沫捞出备用，酸辣椒切碎备好。2.米粉放入沸水锅中烫煮至软熟有弹性，捞出沥干水分盛入碗中。3.舀入滚烫的牛肉汤，放入牛肉片撒上酸辣椒、花椒面和香菜碎即成。'
+    elif dish_id == 'guizhou_kaili_suantang_yu' or dish_id == 'guizhou_sour_fish_soup':
+        return '1.稻花鱼处理干净沥干水分，番茄切成大块备用。2.红酸汤倒入砂锅中大火煮沸，放入番茄块和木姜子煮出酸香味。3.放入整条鱼大火煮开后转中火煮十分钟至鱼肉熟透，加盐调味即成。'
+    elif dish_id == 'guizhou_liangban_zheergen':
+        return '1.折耳根摘去老根须洗净泥沙，切成三厘米长的段沥干水分备用。2.碗中放入辣椒油、醋、蒜泥和酱油调成酸辣调味汁。3.将调味汁浇在折耳根上充分拌匀腌制十分钟入味即可食用。'
+    elif dish_id == 'guizhou_liupanshui_yangroufen':
+        return '1.羊肉切薄片焯水去除膻味和血沫捞出沥干，干辣椒切段备用。2.米粉放入沸水锅中烫煮至软熟透明，捞出沥干盛入碗中。3.舀入滚烫的羊肉汤，放入羊肉片撒上辣椒、花椒面和香菜碎即成。'
+    elif dish_id == 'guizhou_qiandongnan_yanyu':
+        return '1.稻花鱼处理干净沥干水分，糯米蒸熟放凉备用。2.鱼身内外均匀涂抹食盐和辣椒面，鱼腹中塞入蒸好的糯米和姜丝。3.一层鱼一层糯米码入干净的坛子中密封，腌制三至六个月发酵成熟即成。'
+    elif dish_id == 'guizhou_qingyan_doufu':
+        return '1.青岩本地豆腐切成麻将大小的方块，放在通风处晾干表面水分。2.入六成热油锅中火炸至外皮金黄酥脆内部嫩滑，或用炭火烤至外焦里嫩。3.捞出装盘蘸辣椒面、花椒面和折耳根调成的蘸水食用。'
+    elif dish_id == 'guizhou_qingyan_zhurou':
+        return '1.猪蹄斩成大块焯水去除血沫捞出，锅中放冰糖小火炒至枣红色糖色。2.放入猪蹄翻炒均匀上色，加入酱油、八角、桂皮和没过猪蹄的清水。3.大火煮开转小火焖煮两小时至猪蹄酥烂入味胶质丰富，收汁装盘。'
+    elif dish_id == 'guizhou_siwa_wa':
+        return '1.面粉加水和成面团擀成薄薄的面皮上笼蒸熟，保持柔软备用。2.萝卜丝、海带丝和折耳根分别洗净切好，辣椒水调好备用。3.取一张面皮摊在掌心放入各种菜丝适量，包成小包袱状收口蘸辣椒水食用。'
+    elif dish_id == 'guizhou_tongren_shefan':
+        return '1.大米洗净沥干，腊肉切成小丁，蒿菜和野葱洗净切碎，花生炒香备用。2.将大米、腊肉丁、蒿菜碎、野葱碎和花生混合均匀放入蒸锅。3.加适量清水大火蒸四十分钟至米饭熟透，拌匀即可食用清香扑鼻。'
+    elif dish_id == 'guizhou_zhenyuan_zhaocai':
+        return '1.青菜洗净晾干表面多余水分，撒上食盐反复揉搓至出水变软。2.加入切碎的辣椒、花椒和少许白酒拌匀使味道充分融合。3.装入干净坛子中用力压实密封坛口，腌制一个月以上即可长期保存食用。'
+    elif dish_id == 'guizhou_zhergen_chao_larou':
+        return '1.折耳根洗净切成四厘米长的段，腊肉切薄片，干辣椒切段，蒜切片备用。2.锅中少许油烧热下腊肉片小火煸出油脂至边缘微焦，放入干辣椒和蒜片爆香。3.倒入折耳根大火快速翻炒两分钟至断生，加少许盐调味出锅装盘。'
+    elif dish_id == 'guizhou_zunyi_douhuamian':
+        return '1.面条放入沸水锅中煮至熟透有弹性，捞出沥干水分盛入大碗中。2.豆花在另一锅中小火加热保持温热，用勺子大块舀在面条上面。3.淋上红亮的辣椒油撒上花椒面和炒香的花生碎，拌匀即可食用麻辣鲜香。'
+    elif dish_id == 'guizhou_zunyi_jidangao':
+        return '1.鸡蛋打入盆中加入白糖，用打蛋器高速搅打至体积膨大发白起泡。2.筛入面粉用翻拌手法轻轻拌匀，再加入融化的猪油拌成顺滑面糊。3.倒入纸杯模具中送入预热好的烤箱，一百七十度烤二十五分钟至金黄膨松。'
+
+    # ===== HAINAN =====
+    elif dish_id == 'hainan_baoting_qiongzhong_lizhi':
+        return '1.琼中绿橙用清水冲洗干净表皮的灰尘和杂质，用水果刀对半切开或切成瓣。2.直接剥皮鲜食果肉，皮薄肉厚汁水丰富清甜爽口品质极佳。3.也可用榨汁机打成果汁冰镇后饮用，橙皮晒干可泡水清香解腻。'
+    elif dish_id == 'hainan_baoting_shanlan_jiu' or dish_id == 'hainan_baoting_shanlanjiu':
+        return '1.山兰稻米淘洗干净后上笼蒸熟，取出摊开在竹席上晾凉至不烫手。2.将碾碎的酒曲均匀撒在米饭上充分拌匀，装入干净的陶坛中压实。3.密封坛口发酵三到五天，待酒香浓郁汁液甘甜即可开坛饮用醇厚回甘。'
+    elif dish_id == 'hainan_changjiang_mangguo':
+        return '1.昌江芒果用清水冲洗干净表面，用水果刀沿着果核两侧切下果肉。2.果肉切块直接鲜食，肉质细腻纤维少香甜浓郁果汁丰富。3.也可将芒果肉放入搅拌机打成芒果汁或芒果冰沙，冰镇后饮用更加爽口。'
+    elif dish_id == 'hainan_chengmai_ruixi_niurou':
+        return '1.牛肉顺着纹路切成大薄片，用酱油、辣椒碎和五香粉充分拌匀腌制四小时。2.将腌好的牛肉片平铺在烤架上，入烤箱低温慢烤或甘蔗渣烟熏。3.烤至牛肉干香收缩色泽深红，取出晾凉切片食用咸香耐嚼风味独特。'
+    elif dish_id == 'hainan_danzhou_zongzi' or dish_id == 'hainan_danzhou_zongzi2':
+        return '1.糯米提前浸泡四小时沥干，猪肉切大块用五香粉和酱油腌制，咸蛋黄备好。2.粽叶两张叠放铺好，依次放入糯米、猪肉块、咸蛋黄和虾仁。3.包成枕头形用绳扎紧，放入大锅加水大火煮三小时至糯米软糯即成。'
+    elif dish_id == 'hainan_dingan_xiangou_niurou' or dish_id == 'hainan_dingan_xianguo_niurou':
+        return '1.新鲜牛肉逆纹切成薄片，用酱油、沙姜碎和蒜末拌匀腌制二十分钟入味。2.大火烧热铁锅至冒烟，倒入牛肉片快速翻炒至变色断生。3.也可将炒好的牛肉片入烤箱烤至表面微焦，肉质鲜嫩多汁香气扑鼻。'
+    elif dish_id == 'hainan_dingan_zongzi':
+        return '1.糯米提前浸泡四小时沥干水分，五花肉切块用酱油腌制入味，咸蛋黄备好。2.柊叶两张叠放铺好，依次放入糯米、五花肉块和咸蛋黄包成四角形扎紧。3.放入大锅加水没过粽子大火煮三小时，柊叶清香渗入糯米即成。'
+    elif dish_id == 'hainan_dongfang_sigeng_kao_ruzhu':
+        return '1.乳猪处理干净去内脏，里外均匀涂抹五香粉和食盐腌制两小时，外皮刷蜂蜜风干。2.挂入炭火烤炉中以中小火慢烤，勤翻转使皮色均匀受热一致。3.烤约一个半小时至皮色金红酥脆肉质鲜嫩多汁，取出斩件装盘食用。'
+    elif dish_id == 'hainan_dongshan_yang':
+        return '1.东山羊肉斩成大块冷水下锅焯去血沫和膻味，捞出冲洗干净备用。2.砂锅中加入当归片、枸杞和姜片，放入羊肉块加足量清水。3.大火煮开转小火慢炖两小时至羊肉酥烂汤色奶白，加盐调味即成。'
+    elif dish_id == 'hainan_haikou_jiazi_niurougan':
+        return '1.牛肉顺着纹路切成大薄片，用酱油、辣椒碎和五香粉充分拌匀腌制四小时。2.将腌好的牛肉片平铺在烤架上，入烤箱低温慢烤或甘蔗渣烟熏。3.烤至牛肉干香收缩表面深红，取出晾凉切片食用肉质紧实咸香耐嚼。'
+    elif dish_id == 'hainan_haikou_qingbuliang':
+        return '1.红豆、绿豆和薏米分别洗净煮熟至软烂但不碎，捞出放凉备用。2.芋头去皮切小块蒸熟，西瓜切小丁，椰奶提前冰镇好。3.碗中依次放入红豆绿豆薏米芋头和西瓜丁，倒入冰椰奶搅匀即成清凉爽口。'
+
+    # ===== Fallback: generic recipe generation =====
+    else:
+        return generate_generic_recipe(name, cat, ingredients, methods, difficulty)
+
+
+def generate_generic_recipe(name, cat, ingredients, methods, difficulty):
+    """Generate a generic recipe based on dish properties."""
+    ing_str = get_ingredients_str(ingredients, 4)
+    main_method = methods[0] if methods else '烹制'
+    i0 = ingredients[0] if len(ingredients) > 0 else '主料'
+    i1 = ingredients[1] if len(ingredients) > 1 else '配料'
+    i2 = ingredients[2] if len(ingredients) > 2 else ''
+    i12 = get_ingredients_str(ingredients[1:3], 2) if len(ingredients) > 1 else '配料'
+
+    if cat == 'main':
+        if 'stir_fry' in [m for m in methods]:
+            return f'1.{i0}处理干净切成适当大小备用，{i12}分别切好。2.锅中油烧至七成热，下{i0}大火翻炒至变色，加入{i12}继续翻炒。3.加盐和酱油调味翻炒均匀，大火收汁后出锅装盘即可食用。'
+        elif 'braise' in [m for m in methods]:
+            return f'1.{i0}处理干净切成块状，冷水下锅焯去血沫捞出冲洗干净。2.锅中油热爆香姜蒜和{i12}，放入{i0}翻炒上色加足量水。3.大火煮开转小火焖煮至{i0}酥烂入味，大火收浓汤汁装盘即成。'
+        elif 'roast' in [m for m in methods]:
+            return f'1.{i0}处理干净沥干水分，用{i12}里外均匀涂抹腌制两小时充分入味。2.将腌好的{i0}放入预热好的烤箱或炭火上中火慢烤。3.烤制过程中不断翻转使受热均匀，烤至表面金黄肉质熟透取出斩件食用。'
+        elif 'steam' in [m for m in methods]:
+            return f'1.{i0}处理干净沥干水分，用{i12}和少许料酒腌制半小时去腥入味。2.将{i0}放入蒸盘中摆好造型铺上姜丝葱段。3.上笼大火蒸制十五分钟至肉质刚熟鲜嫩，淋上热油和酱油即可食用。'
+        elif 'deep_fry' in [m for m in methods]:
+            return f'1.{i0}处理干净切成适当大小，用{i12}和少许盐腌制半小时入味。2.腌好的{i0}表面裹上薄薄一层淀粉或面糊。3.入六成热油锅中火炸至金黄酥脆内部熟透，捞出控油装盘即食。'
+        else:
+            return f'1.{i0}处理干净切成适当大小备用，准备好{i12}。2.锅中加入{i0}和{i12}，加适量清水{main_method}至熟透。3.加盐调味翻拌均匀，出锅装盘即可食用。'
+
+    elif cat == 'staple':
+        if 'boil' in [m for m in methods]:
+            return f'1.{i0}准备好，{i12}分别洗净切好备用。2.锅中加足量清水大火烧开，放入{i0}煮至熟透有弹性。3.加入{i12}调味，连汤盛入碗中即可食用鲜香可口。'
+        elif 'steam' in [m for m in methods]:
+            return f'1.{i0}提前浸泡数小时至充分吸水变软沥干备用。2.加入{i12}拌匀调味，放入蒸碗或蒸笼中铺平。3.上笼大火蒸四十分钟至完全熟透软糯，取出拌匀即可食用。'
+        elif 'stir_fry' in [m for m in methods]:
+            return f'1.{i0}处理好备用，{i12}分别切好。2.大火烧热锅中油，下{i12}炒出香味再放{i0}翻炒。3.加盐和酱油调味大火翻炒均匀，出锅装盘即可食用。'
+        else:
+            return f'1.{i0}处理好备用，{i12}洗净切好。2.锅中加水烧开放入{i0}{main_method}至熟透。3.加入{i12}调味搅匀，盛入碗中即可食用。'
+
+    elif cat == 'soup':
+        return f'1.{i0}冷水下锅焯去血沫捞出冲洗干净，{i12}切好备用。2.砂锅中放入{i0}和{i12}，加足量清水大火煮沸。3.转小火慢炖一至两小时至汤色浓白味道鲜美，加盐调味即可饮用。'
+
+    elif cat == 'cold_dish':
+        if 'pickle' in [m for m in methods]:
+            return f'1.{i0}洗净晾干表面水分，撒上食盐反复揉搓至出水变软。2.加入{i12}充分拌匀使各种味道融合。3.装入干净坛子中压实密封，腌制数天至入味变酸即可取出食用。'
+        else:
+            return f'1.{i0}处理干净切成适合凉拌的大小或形状备用。2.碗中放入{i12}调成酸辣或咸香调味汁。3.将调味汁浇在{i0}上充分拌匀腌制片刻入味即可食用。'
+
+    elif cat == 'snack':
+        return f'1.{i0}处理好成适合加工的状态，{i12}分别备好。2.将{i0}与配料按传统方法加工成型。3.{main_method}至熟透外表金黄或软糯，配调料即可食用。'
+
+    elif cat == 'dessert':
+        return f'1.{i0}处理好备用，{i12}准备好作为辅料或馅料。2.将主要食材加工成需要的形状并混合调味。3.{main_method}至熟透即可食用，可热食或放凉后食用风味各异。'
+
+    elif cat == 'street_food':
+        return f'1.{i0}处理干净备用，{i12}作为配料或蘸料分别备好。2.将{i0}用传统方法加工至熟透。3.搭配{i12}蘸食或拌食，街头风味十足。'
+
+    elif cat == 'drink':
+        return f'1.{i0}清洗干净备用，{i12}准备好。2.锅中加入{i0}和{i12}加足量清水大火煮沸。3.转小火熬煮出香味和营养后即可过滤饮用。'
+
+    else:
+        return f'1.{i0}处理干净切成适当大小备用，准备好{i12}。2.按照传统{main_method}的方法进行烹制至熟透。3.加盐等调料调味后出锅装盘即可食用。'
+
+
+def main():
+    with open('C:/Users/29774/Desktop/Claude/food-map/scripts/batch_2.json', 'r', encoding='utf-8') as f:
+        dishes = json.load(f)
+
+    print(f"Total dishes: {len(dishes)}")
+
+    too_short = []
+    too_long = []
+    sql_lines = []
+    for dish in dishes:
+        recipe = generate_recipe(dish)
+        char_count = len(recipe)
+        if char_count < 80:
+            too_short.append((dish['id'], dish['name'], char_count))
+        if char_count > 150:
+            too_long.append((dish['id'], dish['name'], char_count))
+
+        escaped_recipe = escape_sql(recipe)
+        sql = f"UPDATE dishes SET recipe = '{escaped_recipe}' WHERE id = '{dish['id']}';"
+        sql_lines.append(sql)
+
+    if too_short:
+        print(f"TOO SHORT ({len(too_short)}):")
+        for x in too_short:
+            print(f"  {x[0]}: {x[1]} ({x[2]} chars)")
+    if too_long:
+        print(f"TOO LONG ({len(too_long)}):")
+        for x in too_long:
+            print(f"  {x[0]}: {x[1]} ({x[2]} chars)")
+
+    print(f"Short: {len(too_short)}, Long: {len(too_long)}, OK: {len(dishes) - len(too_short) - len(too_long)}")
+
+    with open('C:/Users/29774/Desktop/Claude/food-map/scripts/recipes_2.sql', 'w', encoding='utf-8') as f:
+        f.write('\n'.join(sql_lines) + '\n')
+
+    print(f"Generated {len(sql_lines)} UPDATE statements in recipes_2.sql")
+
+if __name__ == '__main__':
+    main()

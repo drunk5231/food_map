@@ -1,0 +1,190 @@
+# 味觉地图 · 修复清单
+# 每个条目标注 [P0/P1/P2/P3/Q(快速修复)] + 预估工作量
+# 修复后在 [ ] 前标记 [x]
+
+====================================================================
+P0 · 致命问题（发布前必须修复）
+====================================================================
+
+[x][P0-1] 添加Dish运行时验证器（2-3h）
+  [x] 创建 src/utils/validators.ts — isDish() 类型守卫
+  [x] DishCacheContext.tsx:70 Supabase结果添加 filter(isDish)
+  [x] useDishes.ts:66 Supabase结果添加 filter(isDish)
+  [x] DishCacheContext.tsx:17 localStorage缓存读取添加验证
+  [x] 缓存数据添加 version 字段
+
+[x][P0-2] 路由级ErrorBoundary（2-3h）
+  [x] 创建 src/components/RouteErrorBoundary.tsx
+  [x] App.tsx 各路由包裹 RouteErrorBoundary
+  [x] ErrorBoundary.tsx 添加 componentDidCatch 日志
+
+[x][P0-3] localStorage配额溢出处理（1h）
+  [x] storage.ts catch块检测 QuotaExceededError
+  [x] 通过Toast提示用户
+  [x] DishCacheContext.tsx 写入前检查 navigator.storage.estimate()
+
+[x][P0-4] 添加CSP头（10min）
+  [x] vercel.json 添加 Content-Security-Policy headers
+
+====================================================================
+快速修复（每个 <30min）
+====================================================================
+
+[x][Q1] CSP头 → vercel.json（10min）— 同P0-4
+[x][Q2] prefers-reduced-motion CSS → index.css（10min）
+[x][Q3] 搜索输入焦点轮廓 → SearchPage.tsx（10min）
+[x][Q4] 装饰性SVG添加 aria-hidden → ThemeToggle/ScrollToTopButton（15min）
+[x][Q5] window.alert替换为Toast → share.ts（15min）
+[x][Q6] PageError添加重试按钮 → PageLoading.tsx + 页面（20min）
+[x][Q7] 移除死代码 County类型 → types/index.ts（10min）
+[x][Q8] 魔法数字命名化 → 多文件（20min）
+[x][Q9] localStorage key集中管理 → 新建 src/constants.ts（15min）
+[x][Q10] 生成512px PWA图标 → public/（20min）
+[x][Q11] 添加跳过导航链接 → App.tsx（15min）
+[x][Q12] 模态框 aria-labelledby → DishDetailModal/SolarTermDetailModal（15min）
+
+====================================================================
+P1 · 高优先级
+====================================================================
+
+[x][P1-1] 修复颜色对比度 WCAG 1.4.3（1h）
+  [x] index.css --color-primary 加深至 #B8300A
+  [x] index.css --color-accent 加深至 #C06800
+  [x] 检查dark mode对应值（已达标，无需修改）
+
+[x][P1-2] 补全可访问性基础（1h）
+  [x] App.tsx 添加跳过导航链接（同Q11）
+  [x] index.css 添加 prefers-reduced-motion（同Q2）
+  [x] SearchPage.tsx 修复焦点轮廓（同Q3）
+
+[x][P1-3] useDishes添加本地降级（1h）
+  [x] useDishes.ts Supabase失败时降级过滤 localDishes
+
+[x][P1-4] 稳定回调引用修复Memo失效（2-3h）
+  [x] HomePage.tsx HotDishesSection 提取memoized包装 (HotDishItem)
+  [x] DishList.tsx 点击处理器稳定化
+  [x] AppContext favorites/eaten/wantToEat 转Set
+
+[x][P1-5] 测试基础设施（2-3天）
+  [x] Supabase客户端改为nullable（无需mock）
+  [x] solarTerm.ts 单元测试（28个测试）
+  [x] storage.ts 补全测试（12个测试）
+  [x] validators.ts 测试（16个测试）
+  [x] useUserState renderHook 测试（8个测试）
+  [x] DishCard 组件测试（13个测试）
+  [x] ChinaMap 组件测试（8个测试）
+  [x] DishDetail 组件测试（14个测试）
+  [x] Toast 组件测试（5个测试）
+
+[x][P1-6] 数据加载失败重试UI（30min）
+  [x] PageError 添加 onRetry prop
+  [x] FoodClockPage/TasteTestPage 接线 retry
+
+[x][P1-7] 生成512px PWA图标（30min）— 同Q10
+
+[x][P1-8] ARIA属性补全（2-3h）
+  [x] DishDetailModal/SolarTermDetailModal aria-labelledby
+  [x] FavoritesPage aria-controls/role=tabpanel
+  [x] FilterChipGroup role=radiogroup/aria-pressed
+  [x] SearchPage aria-live=polite 搜索结果计数
+  [x] ChinaMap 省份路径 aria-label（含菜品数）
+  [x] FoodClock role=group/动态aria-label
+
+[x][P1-9] 提取useModalAccessibility hook（1h）
+  [x] 从 DishDetailModal + SolarTermDetailModal 提取共享hook
+
+====================================================================
+P2 · 中优先级
+====================================================================
+
+[x][P2-1] 剩余类型安全问题（3-4h）
+  [x] geoLoader.ts GeoJSON坐标 Array.isArray 检查
+  [x] geoLoader.ts ProvincePath 字段验证
+  [x] FoodClock.tsx CustomEvent detail 验证
+  [x] 模态框 activeElement 类型 HTMLElement|null
+  [x] ChinaMap.tsx EventTarget instanceof Element 检查
+  [x] FavoritesPage.tsx Record类型标注
+  [x] DishDetail.tsx Season穷尽检查
+  [x] types/index.ts SolarTerm.season 字面量联合类型
+  [x] storage.ts 口味历史深度验证
+
+[x][P2-2] 改进错误处理（3-4h）
+  [x] ErrorBoundary componentDidCatch 日志
+  [x] FavoritesPage 孤立收藏ID清理
+  [x] share.ts window.alert → Toast
+  [x] supabase.ts 环境变量缺失降级
+  [x] FoodClock 空时段降级信息
+
+[x][P2-3] 提取业务逻辑（2-3h）
+  [x] FavoritesPage → useFavoritesStats hook
+  [x] SearchPage → useFilteredDishes hook
+  [x] HomePage → useHomePageData hook
+
+[x][P2-4] 触摸目标尺寸（1h）
+  [x] FilterChipGroup min-h 44px
+  [x] 搜索历史删除按钮 44px
+  [x] 搜索清除按钮 44px
+  [x] 排序选项按钮 44px
+
+[x][P2-5] Supabase查询优化（1h）
+  [x] select('*') → 显式列列表
+  [x] 添加复合索引 idx_dishes_province_category
+
+[x][P2-6] Stale-While-Revalidate缓存（2-3h）
+  [x] DishCacheContext 返回过期缓存+后台刷新
+  [x] visibilitychange 监听触发后台刷新
+
+[x][P2-7] Emoji可访问性替代（2h）
+  [x] 装饰性emoji aria-hidden
+  [x] renderDifficultyStars aria-label（新增 getDifficultyAriaLabel）
+  [x] 装饰性SVG aria-hidden
+
+====================================================================
+P3 · 未来改进
+====================================================================
+
+[x][P3-1] Service Worker加固（已完成，见TD-11）
+[x][P3-2] 数据迁移策略
+[x][P3-3] 动画离屏暂停
+[x][P3-4] IndexedDB替代localStorage
+[x][P3-5] 快照测试（FlavorRadar 4个快照 + 11个测试）
+[x][P3-6] Playwright E2E测试
+  [x] 安装 @playwright/test
+  [x] 创建 playwright.config.ts（webServer自动启动dev）
+  [x] 创建 tsconfig.e2e.json（独立于src/）
+  [x] 编写5个核心流程E2E测试 e2e/core-flows.spec.ts
+  [x] 首页地图加载、搜索流程、收藏流程、省份钻取、口味测试
+
+[x][P3-7] 县级GeoJSON离线缓存
+  [x] 专用缓存 food-map-county-geojson（独立于主缓存）
+  [x] LRU淘汰策略（最大30条，re-insert标记最近使用）
+  [x] 缓存版本管理（bump COUNTY_GEOJSON_CACHE_VERSION即失效）
+  [x] 离线降级返回503 JSON错误响应
+  [x] geoLoader.ts无需改动，SW透明拦截
+
+[x][P3-8] 用户数据跨设备同步
+  [x] 创建 useAuth hook（Supabase magic link登录）
+  [x] 创建 useSync hook（登录时合并+状态变更时防抖推送）
+  [x] 创建 SQL migration（user_states表+RLS策略）
+  [x] AppContext扩展 user/authLoading/signInWithEmail/signOut
+  [x] Header添加登录/登出UI（magic link模态框）
+  [x] 数组合并策略：union避免数据丢失，tasteProfile用时间戳决胜
+  [x] Supabase未配置时完全降级到localStorage
+[x][P3-9] 用户数据导出/导入
+
+====================================================================
+技术债务
+====================================================================
+
+[x][TD-1] Dish运行时验证器（同P0-1）
+[x][TD-2] useModalAccessibility hook（同P1-9）
+[x][TD-3] useFavoritesStats hook（同P2-3）
+[x][TD-4] useFilteredDishes hook（同P2-3）
+[x][TD-5] favorites/eaten/wantToEat转Set（同P1-4）
+[x][TD-6] Stale-While-Revalidate（同P2-6）
+[x][TD-7] 路由级ErrorBoundary（同P0-2）
+[x][TD-8] 集中管理label/color映射
+[x][TD-9] 拆分solarTerm.ts
+[x][TD-10] 测试基础设施（同P1-5）
+[x][TD-11] Service Worker现代化
+[x][TD-12] IndexedDB迁移（同P3-4）
