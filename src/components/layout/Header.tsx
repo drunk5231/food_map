@@ -34,14 +34,8 @@ export default function Header() {
       try {
         await signInWithEmail(trimmed)
         setSent(true)
-      } catch (err) {
-        // 429 = rate limit but email may still have been sent
-        const msg = err instanceof Error ? err.message : String(err)
-        if (msg.includes('429') || msg.includes('rate')) {
-          setSent(true) // show OTP input anyway — email was likely sent
-        } else {
-          setError('发送失败，请检查邮箱地址')
-        }
+      } catch {
+        setError('发送失败，请检查邮箱地址')
       } finally {
         setSending(false)
       }

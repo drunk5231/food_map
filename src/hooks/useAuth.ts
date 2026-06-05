@@ -42,7 +42,12 @@ export function useAuth() {
       email,
       options: { shouldCreateUser: true },
     })
-    if (error) throw error
+    if (error) {
+      // 429 rate limit — email was likely still sent
+      const status = (error as unknown as Record<string, unknown>).status
+      if (status === 429) return
+      throw error
+    }
   }, [])
 
   const verifyOtp = useCallback(async (email: string, token: string) => {
