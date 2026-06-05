@@ -58,7 +58,8 @@ async function enforceCacheLimit(cacheName) {
 async function networkFirst(request) {
   try {
     const response = await fetch(request)
-    if (response && response.status === 200) {
+    // Cache API only supports GET requests
+    if (response && response.status === 200 && request.method === 'GET') {
       const cache = await caches.open(CACHE_NAME)
       await cache.put(request, response.clone())
       await enforceCacheLimit(CACHE_NAME)
@@ -77,7 +78,7 @@ async function cacheFirst(request) {
   if (cached) return cached
   try {
     const response = await fetch(request)
-    if (response && response.status === 200) {
+    if (response && response.status === 200 && request.method === 'GET') {
       const cache = await caches.open(CACHE_NAME)
       await cache.put(request, response.clone())
       await enforceCacheLimit(CACHE_NAME)
